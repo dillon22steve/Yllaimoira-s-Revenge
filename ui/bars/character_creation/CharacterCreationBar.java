@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import gamestate.GameStates;
 import ui.bars.ButtonBar;
 import ui.buttons.CharCreatBtn;
 import utilz.Constants;
@@ -72,7 +73,11 @@ public class CharacterCreationBar extends ButtonBar {
                 } //if
                 break;
             case Constants.KeyboardConstants.ENTER:
-                isSelected = true;
+                if (isSelected == true) {
+                    changeState();
+                } else {
+                    isSelected = true;
+                }
                 break;
         } //switch
     } //keyPressed
@@ -91,7 +96,7 @@ public class CharacterCreationBar extends ButtonBar {
     public void mouseClicked(int x, int y) {
         if (isSelected == true && (confirmSelecBtn.getBounds().contains(x, y - 25)) ||
             confirmSelecBtn.getBounds().contains(x, y + 25)) {
-            Enums.CharacterCreationStates.State = Enums.CharacterCreationStates.CLASS_SELECT;
+            changeState();
             return;
         }
         for (int i = 0; i < btns.length; i++) {
@@ -119,5 +124,15 @@ public class CharacterCreationBar extends ButtonBar {
             } //if
         } //if
     } //mouseWheelMoved
+
+    private void changeState() {
+        if (Enums.CharacterCreationStates.State == Enums.CharacterCreationStates.RACE_SELECT) {
+            Enums.CharacterCreationStates.State = Enums.CharacterCreationStates.CLASS_SELECT;
+        } else if (Enums.CharacterCreationStates.State == Enums.CharacterCreationStates.CLASS_SELECT) {
+            Enums.CharacterCreationStates.State = Enums.CharacterCreationStates.BACKGROUND_SELECT;
+        } else if (Enums.CharacterCreationStates.State == Enums.CharacterCreationStates.BACKGROUND_SELECT) {
+            GameStates.GameState = GameStates.PLAYING;
+        }
+    }
     
 }

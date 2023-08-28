@@ -3,19 +3,21 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import ui.bars.character_creation.BackgroundSelectBar;
 import ui.bars.character_creation.ClassSelectBar;
 import ui.bars.character_creation.RaceSelectBar;
-import utilz.Constants;
 import utilz.Enums;
 
 public class CharacterCreation implements GameStateInterface {
     private RaceSelectBar raceSelectMenu;
     private ClassSelectBar classSelectMenu;
+    private BackgroundSelectBar backgroundSelectMenu;
 
     public CharacterCreation() {
         raceSelectMenu = new RaceSelectBar(1180, 900, 50, 50);
         classSelectMenu = new ClassSelectBar(1180, 900, 50, 50);
-    }
+        backgroundSelectMenu = new BackgroundSelectBar(1180, 900, 50, 50);
+    } //constructor
 
     public void render(Graphics g) {
         switch(Enums.CharacterCreationStates.State) {
@@ -26,8 +28,9 @@ public class CharacterCreation implements GameStateInterface {
                 classSelectMenu.draw(g);
                 break;
             case BACKGROUND_SELECT:
+                backgroundSelectMenu.draw(g);
                 break;
-        }
+        } //switch
     }
 
     @Override
@@ -46,8 +49,9 @@ public class CharacterCreation implements GameStateInterface {
                 classSelectMenu.keyPressed(e);
                 break;
             case BACKGROUND_SELECT:
+                backgroundSelectMenu.keyPressed(e);
                 break;
-        }
+        } //switch
     }
 
     @Override
@@ -60,8 +64,9 @@ public class CharacterCreation implements GameStateInterface {
                 classSelectMenu.mouseClicked(x, y);
                 break;
             case BACKGROUND_SELECT:
+                backgroundSelectMenu.mouseClicked(x, y);
                 break;
-        }
+        } //switch
     }
 
     @Override
@@ -74,8 +79,9 @@ public class CharacterCreation implements GameStateInterface {
                 classSelectMenu.mouseMoved(x, y);
                 break;
             case BACKGROUND_SELECT:
+                backgroundSelectMenu.mouseMoved(x, y);
                 break;
-        }
+        } //switch
     }
 
     public void mouseWheelMoved(int wheelRotation) {
@@ -87,8 +93,9 @@ public class CharacterCreation implements GameStateInterface {
                 classSelectMenu.mouseWheelMoved(wheelRotation);
                 break;
             case BACKGROUND_SELECT:
+                backgroundSelectMenu.mouseWheelMoved(wheelRotation);
                 break;
-        }
+        } //switch
     }
     
 }

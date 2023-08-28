@@ -12,8 +12,7 @@ import java.awt.Toolkit;
 public class GamePanel extends JPanel {
     private Game game;
 
-    private Dimension size;
-    private Dimension testSize;
+    private Dimension screenSize;
 
     private int width, height;
 
@@ -42,15 +41,11 @@ public class GamePanel extends JPanel {
 
 
     private void setPanelSize() {
-        //size = new Dimension(1280, 1000);
-        testSize = Toolkit.getDefaultToolkit().getScreenSize();
-        width = (int)testSize.getWidth();
-        height = (int)testSize.getHeight();
-
-        size = testSize;
-        setMinimumSize(size);
-        setMaximumSize(size);
-        setPreferredSize(size);
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        width = (int)screenSize.getWidth();
+        height = (int)screenSize.getHeight();
+        System.out.println(width + "(width) by " + height + "(height)");
+        setPreferredSize(screenSize);
     }
 
 

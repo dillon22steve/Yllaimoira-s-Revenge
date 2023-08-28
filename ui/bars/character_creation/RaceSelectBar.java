@@ -129,58 +129,5 @@ public class RaceSelectBar extends CharacterCreationBar {
         g.setFont(Constants.Fonts.CHAR_CREAT_DESC_FONT);
         g.drawString(attributes, 650, yPos);
     } //drawRaceDesc
-
-
-    /*
-    public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
-            case Constants.KeyboardConstants.UP:
-                isSelected = false;
-                if(selection > 0) {
-                    selection = selection - 1;
-                } else {
-                    selection = (races.length - 1);
-                } //if
-                break;
-            case Constants.KeyboardConstants.DOWN:
-                isSelected = false;
-                if (selection < (races.length - 1)) {
-                    selection = selection + 1;
-                } else {
-                    selection = 0;
-                } //if
-                break;
-            case Constants.KeyboardConstants.ENTER:
-                isSelected = true;
-                break;
-        } //switch
-    } //keyPressed
-
-
-    public void mouseMoved(int x, int y) {
-        for (int i = 0; i < races.length; i++) {
-            if ((races[i].getBounds().contains(x, (y - 25))) ||
-                (races[i].getBounds().contains(x, (y + 25)))) {
-                selection = i;
-            } //if
-        } //for
-    } //mouseMoved
-
-
-    public void mouseClicked(int x, int y) {
-        if (isSelected == true && (confirmSelecBtn.getBounds().contains(x, y - 25)) ||
-            confirmSelecBtn.getBounds().contains(x, y + 25)) {
-            Enums.CharacterCreationStates.State = Enums.CharacterCreationStates.CLASS_SELECT;
-            return;
-        }
-        for (int i = 0; i < races.length; i++) {
-            if ((races[i].getBounds().contains(x, (y - 25))) ||
-                (races[i].getBounds().contains(x, (y + 25)))) {
-                isSelected = true;
-                selection = i;
-            } //if
-        } //for
-    } //mouseClicked
-    */
     
 }

@@ -10,9 +10,13 @@ public class GameFrame extends JFrame {
     public GameFrame(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-        //this.setResizable(false);
-        this.setResizable(true);
+        this.setResizable(false);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        /* Uncomment this setUndecored line when the game is ready to play 
+         * It gets rid of the title bar at the top.
+        */
+        //this.setUndecorated(true);
 
 
 
