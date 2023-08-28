@@ -2,15 +2,16 @@ package utilz;
 
 import java.awt.Font;
 
+import render.GamePanel;
+
 public class Constants {
 
     public class Fonts {
-        public static Font MAIN_MENU_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, 24);
-        public static Font MAIN_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.PLAIN, 64);
-        public static Font CHAR_CREAT_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, 24);
-        public static Font CHAR_CREAT_RACE_NAME_FONT = new Font("Bookman Old Style", Font.BOLD, 32);
-        public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, 18);
-
+        public static Font MAIN_MENU_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)(0.015* GamePanel.PANEL_WIDTH));
+        public static Font MAIN_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)(0.042* GamePanel.PANEL_WIDTH));
+        public static Font CHAR_CREAT_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)(0.015* GamePanel.PANEL_WIDTH));
+        public static Font CHAR_CREAT_RACE_NAME_FONT = new Font("Bookman Old Style", Font.BOLD, (int)(0.021* GamePanel.PANEL_WIDTH));
+        public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)(0.012* GamePanel.PANEL_WIDTH));
     }
 
     public class KeyboardConstants {

@@ -8,17 +8,17 @@ import utilz.Constants;
 public class ClassSelectBar extends CharacterCreationBar {
 
     CharCreatBtn[] classes = {
-        new CharCreatBtn("Barbarian", 75, 40, 50, 100),
-        new CharCreatBtn("Bard", 75, 40, 50, 170),
-        new CharCreatBtn("Cleric", 75, 40, 50, 240),
-        new CharCreatBtn("Druid", 75, 40, 50, 310),
-        new CharCreatBtn("Fighter", 75, 40, 50, 380),
-        new CharCreatBtn("Paladin", 75, 40, 50, 450),
-        new CharCreatBtn("Ranger", 75, 40, 50, 520),
-        new CharCreatBtn("Rogue", 75, 40, 50, 590),
-        new CharCreatBtn("Sorcerer", 75, 40, 50, 660),
-        new CharCreatBtn("Warlock", 75, 40, 50, 730),
-        new CharCreatBtn("Wizard", 75, 40, 50, 800),
+        new CharCreatBtn("Barbarian", btnWidth, btnHeight, x, y),
+        new CharCreatBtn("Bard", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Cleric", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Druid", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Fighter", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Paladin", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Ranger", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Rogue", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Sorcerer", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Warlock", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Wizard", btnWidth, btnHeight, x, (y += yOffset)),
     };
 
     public ClassSelectBar(int width, int height, int xPos, int yPos) {

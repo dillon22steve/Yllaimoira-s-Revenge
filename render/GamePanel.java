@@ -10,11 +10,12 @@ import java.awt.Toolkit;
 
 
 public class GamePanel extends JPanel {
+    public static int PANEL_WIDTH;
+    public static int PANEL_HEIGHT;
+
     private Game game;
 
     private Dimension screenSize;
-
-    private int width, height;
 
     private MouseInputs mouseInputs;
     private KeyboardInputs keyBoardInputs;
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel {
         this.game = game;
         setPanelSize();
         this.setBackground(Color.BLACK);
+        System.out.println(PANEL_HEIGHT + " by " + PANEL_WIDTH);
     }
 
 
@@ -42,9 +44,8 @@ public class GamePanel extends JPanel {
 
     private void setPanelSize() {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        width = (int)screenSize.getWidth();
-        height = (int)screenSize.getHeight();
-        System.out.println(width + "(width) by " + height + "(height)");
+        PANEL_WIDTH = (int)screenSize.getWidth();
+        PANEL_HEIGHT = (int)screenSize.getHeight();
         setPreferredSize(screenSize);
     }
 
@@ -58,13 +59,5 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         game.getRender().render(g);
-    }
-
-
-    public int getWidth() {
-        return this.width;
-    }
-    public int getHeight() {
-        return this.height;
     }
 }

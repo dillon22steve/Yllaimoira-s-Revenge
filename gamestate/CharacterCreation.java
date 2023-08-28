@@ -3,6 +3,7 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import render.GamePanel;
 import ui.bars.character_creation.BackgroundSelectBar;
 import ui.bars.character_creation.ClassSelectBar;
 import ui.bars.character_creation.RaceSelectBar;
@@ -13,10 +14,13 @@ public class CharacterCreation implements GameStateInterface {
     private ClassSelectBar classSelectMenu;
     private BackgroundSelectBar backgroundSelectMenu;
 
+    private int menuWidth = GamePanel.PANEL_WIDTH;
+    private int menuHeight = GamePanel.PANEL_HEIGHT;
+
     public CharacterCreation() {
-        raceSelectMenu = new RaceSelectBar(1180, 900, 50, 50);
-        classSelectMenu = new ClassSelectBar(1180, 900, 50, 50);
-        backgroundSelectMenu = new BackgroundSelectBar(1180, 900, 50, 50);
+        raceSelectMenu = new RaceSelectBar(menuWidth, menuHeight, (menuWidth / 25), (menuHeight / 25));
+        classSelectMenu = new ClassSelectBar(menuWidth, menuHeight, (menuWidth / 25), (menuHeight / 25));
+        backgroundSelectMenu = new BackgroundSelectBar(menuWidth, menuHeight, (menuWidth / 25), (menuHeight / 25));
     } //constructor
 
     public void render(Graphics g) {

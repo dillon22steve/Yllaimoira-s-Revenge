@@ -11,10 +11,16 @@ import utilz.Constants;
 import utilz.Enums;
 
 public class CharacterCreationBar extends ButtonBar {
+    int btnWidth = this.width / 17;
+    int btnHeight = this.height / 25;
+    int y = this.height / 10;
+    int x = this.width / 26;
+    int yOffset = this.height / 14;
     CharCreatBtn[] btns = null;
-    int arrLength = 0;
 
     CharCreatBtn confirmSelecBtn;
+    int confirmBtnX = (int)(0.55 * this.width);
+    int confirmBtnY = (int)(0.92* this.height);
 
     public static int selection = 0;
 
@@ -26,7 +32,8 @@ public class CharacterCreationBar extends ButtonBar {
 
     public CharacterCreationBar(int width, int height, int xPos, int yPos) {
         super(width, height, xPos, yPos);
-        confirmSelecBtn = new CharCreatBtn("Yes", 75, 40, 850, 800);
+
+        confirmSelecBtn = new CharCreatBtn("Yes", btnWidth, btnHeight, confirmBtnX, confirmBtnY);
     }
 
     public void drawButtons(Graphics g) {
@@ -34,7 +41,7 @@ public class CharacterCreationBar extends ButtonBar {
             if (i == selection) {
                 g.setColor(Color.WHITE);
                 g.setFont(Constants.Fonts.CHAR_CREAT_BTN_FONT);
-                g.drawString("> ", btns[i].getX() - 20, btns[i].getY());
+                g.drawString("> ", (btns[i].getX() - (int)(0.013 * this.width)), btns[i].getY());
             }
 
             btns[i].draw(g);
@@ -49,7 +56,7 @@ public class CharacterCreationBar extends ButtonBar {
     private void drawConfirmSelection(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(Constants.Fonts.CHAR_CREAT_BTN_FONT);
-        g.drawString(("Continue as a " + selectedName + "?"), 500, 800);
+        g.drawString(("Continue as a " + selectedName + "?"), (int)(0.325 * this.width), confirmBtnY);
         confirmSelecBtn.draw(g);
     }
 

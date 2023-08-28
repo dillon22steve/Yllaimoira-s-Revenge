@@ -10,7 +10,7 @@ public class GameFrame extends JFrame {
     public GameFrame(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         /* Uncomment this setUndecored line when the game is ready to play 

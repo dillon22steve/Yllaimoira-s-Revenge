@@ -8,18 +8,19 @@ import utilz.Constants;
 import utilz.Enums;
 
 public class RaceSelectBar extends CharacterCreationBar {
+
     CharCreatBtn[] races = {
-        new CharCreatBtn("Human", 75, 40, 50, 100),
-        new CharCreatBtn("High Elf", 75, 40, 50, 170),
-        new CharCreatBtn("Wood Elf", 75, 40, 50, 240),
-        new CharCreatBtn("Dark Elf", 75, 40, 50, 310),
-        new CharCreatBtn("Half-Elf", 75, 40, 50, 380),
-        new CharCreatBtn("Dwarf", 75, 40, 50, 450),
-        new CharCreatBtn("Tiefling", 75, 40, 50, 520),
-        new CharCreatBtn("Gnome", 75, 40, 50, 590),
-        new CharCreatBtn("Dragonborn", 75, 40, 50, 660),
-        new CharCreatBtn("Halfling", 75, 40, 50, 730),
-        new CharCreatBtn("Half-Orc", 75, 40, 50, 800),
+        new CharCreatBtn("Human", btnWidth, btnHeight, x, y),
+        new CharCreatBtn("High Elf", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Wood Elf", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Dark Elf", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Half-Elf", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Dwarf", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Tiefling", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Gnome", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Dragonborn", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Halfling", btnWidth, btnHeight, x, (y += yOffset)),
+        new CharCreatBtn("Half-Orc", btnWidth, btnHeight, x, (y += yOffset)),
     };
 
 
