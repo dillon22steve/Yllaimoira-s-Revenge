@@ -12,11 +12,10 @@ import utilz.Enums;
 
 public class CharacterCreationBar extends ButtonBar {
     CharCreatBtn[] btns = null;
-    int arrLength = 0;
 
     CharCreatBtn confirmSelecBtn;
 
-    public static int selection = 0;
+    int selection = 0;
 
     String selectedName = "";
     String attributes = "";
