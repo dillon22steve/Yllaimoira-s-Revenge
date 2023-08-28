@@ -6,7 +6,7 @@ import ui.buttons.CharCreatBtn;
 
 public class BackgroundSelectBar extends CharacterCreationBar {
     CharCreatBtn[] backgrounds = {
-        //new CharCreatBtn();
+
     };
 
     public BackgroundSelectBar(int width, int height, int xPos, int yPos) {
