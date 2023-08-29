@@ -3,37 +3,46 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import render.GamePanel;
+import ui.bars.PauseMenuBar;
+
 public class PauseMenu implements GameStateInterface {
+    private PauseMenuBar pauseMenu;
+
+    public PauseMenu() {
+        int width = 200;
+        int height = 350;
+        int x = GamePanel.GAMEPANEL_WIDTH/2 - width/2;
+        int y = GamePanel.GAMEPANEL_HEIGHT/2 - height/2;
+        pauseMenu = new PauseMenuBar(width, height, x, y);
+    }
 
     public void render(Graphics g) {
-        
+        pauseMenu.draw(g);
     }
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+        pauseMenu.keyPressed(e);
     }
 
     @Override
     public void mouseClicked(int x, int y) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+        pauseMenu.mouseClicked(x, y);
     }
 
     @Override
     public void mouseMoved(int x, int y) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
+        pauseMenu.mouseMoved(x, y);
     }
 
     public void mouseWheelMoved(int wheelRotation) {
+        pauseMenu.mouseWheelMoved(wheelRotation);
     }
     
 }

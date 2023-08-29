@@ -8,16 +8,13 @@ import java.awt.Rectangle;
 import utilz.Constants;
 
 public class MainMenuBtn extends Button {
-    private String txt;
-
     static float opacity = 255;
     static float opacityUpdate = 1.2f;
 
     boolean mousePressed, mouseOver, isSelected;
 
     public MainMenuBtn(String txt, int width, int height, int xPos, int yPos) {
-        super(width, height, xPos, yPos);
-        this.txt = txt;
+        super(txt, width, height, xPos, yPos);
     }
 
 

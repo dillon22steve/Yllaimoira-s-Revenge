@@ -45,6 +45,7 @@ public class GamePanel extends JPanel {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         GAMEPANEL_WIDTH = (int)screenSize.getWidth();
         GAMEPANEL_HEIGHT = (int)screenSize.getHeight();
+        System.out.println(GAMEPANEL_WIDTH + "(width) by " + GAMEPANEL_HEIGHT + "(height)");
         setPreferredSize(screenSize);
     }
 

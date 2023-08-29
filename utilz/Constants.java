@@ -10,7 +10,8 @@ public class Constants {
         public static Font CHAR_CREAT_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, 24);
         public static Font CHAR_CREAT_RACE_NAME_FONT = new Font("Bookman Old Style", Font.BOLD, 32);
         public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, 18);
-
+        public static Font PAUSE_MENU_BTN_FONT = new Font("Bookman Old Style", Font.ITALIC, 18);
+        public static Font PAUSE_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.BOLD, 24);
     }
 
     public class KeyboardConstants {

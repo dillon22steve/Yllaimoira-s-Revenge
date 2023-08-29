@@ -4,13 +4,15 @@ import java.awt.Rectangle;
 
 public class Button {
     int width, height, xPos, yPos;
+    String txt;
     private Rectangle bounds;
 
-    public Button(int width, int height, int xPos, int yPos) {
+    public Button(String txt, int width, int height, int xPos, int yPos) {
         this.width = width;
         this.height = height;
         this.xPos = xPos;
         this.yPos = yPos;
+        this.txt = txt;
 
         initBounds();
     }

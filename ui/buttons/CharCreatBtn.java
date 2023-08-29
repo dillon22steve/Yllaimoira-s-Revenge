@@ -6,11 +6,9 @@ import java.awt.Graphics;
 import utilz.Constants;
 
 public class CharCreatBtn extends Button{
-    String txt;
 
     public CharCreatBtn(String txt, int width, int height, int x, int y) {
-        super(width, height, x, y);
-        this.txt = txt;
+        super(txt, width, height, x, y);
     }
 
 
