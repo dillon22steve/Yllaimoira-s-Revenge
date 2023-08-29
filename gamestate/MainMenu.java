@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import render.Game;
+import render.GamePanel;
 import ui.bars.MainMenuBar;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class MainMenu implements GameStateInterface {
@@ -25,7 +27,9 @@ public class MainMenu implements GameStateInterface {
     private void drawTitle(Graphics g) {
         g.setFont(Constants.Fonts.MAIN_MENU_TITLE_FONT);
         g.setColor(Color.WHITE);
-        g.drawString("YLLAIMORA'S REVENGE", game.getGamePanel().getWidth() / 2 - 400, 140);
+        String title = "YLLAIMORA'S REVENGE";
+        int xPos = HelperMethods.calcHorizCenter(g, GamePanel.SCREEN_WIDTH, title);
+        g.drawString(title, xPos, 140);
     }
 
     @Override

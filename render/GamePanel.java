@@ -1,6 +1,8 @@
 package render;
 
 import inputs.*;
+import utilz.HelperMethods;
+
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -12,6 +14,9 @@ import java.awt.Toolkit;
 public class GamePanel extends JPanel {
     public static int GAMEPANEL_WIDTH;
     public static int GAMEPANEL_HEIGHT;
+
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
 
     private Game game;
 
@@ -43,9 +48,19 @@ public class GamePanel extends JPanel {
 
     private void setPanelSize() {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        GAMEPANEL_WIDTH = (int)screenSize.getWidth();
-        GAMEPANEL_HEIGHT = (int)screenSize.getHeight();
-        System.out.println(GAMEPANEL_WIDTH + "(width) by " + GAMEPANEL_HEIGHT + "(height)");
+        SCREEN_WIDTH = (int)screenSize.getWidth();
+        SCREEN_HEIGHT = (int)screenSize.getHeight();
+
+        //GAMEPANEL_WIDTH = HelperMethods.CalcPanelWidth();
+        //GAMEPANEL_HEIGHT = HelperMethods.CalcPanelHeight();
+        GAMEPANEL_WIDTH = 1366;
+        GAMEPANEL_HEIGHT = 768;
+        System.out.println("My screen: " + SCREEN_WIDTH + "(width) by " + SCREEN_HEIGHT + "(height)");
+
+        setMinimumSize(new Dimension(GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT));
+        //setMaximumSize(screenSize);
+        //setPreferredSize(screenSize);
+        //setPreferredSize(new Dimension(GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT));
         setPreferredSize(screenSize);
     }
 

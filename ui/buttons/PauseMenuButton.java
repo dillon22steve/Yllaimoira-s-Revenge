@@ -30,6 +30,9 @@ public class PauseMenuButton extends Button {
         g.setColor(Color.WHITE);
         g.setFont(Constants.Fonts.PAUSE_MENU_BTN_FONT);
         g.drawString(txt, xPos, yPos);
+        if (isSelected) {
+            g.drawString(">", this.xPos - 10, this.yPos);
+        }
     }
 
 
@@ -38,6 +41,12 @@ public class PauseMenuButton extends Button {
     }
     public boolean isSelected() {
         return this.isSelected;
+    }
+    public int getWidth() {
+        return this.width;
+    }
+    public int getHeight() {
+        return this.height;
     }
     
 }

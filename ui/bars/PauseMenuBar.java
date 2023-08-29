@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import gamestate.GameStates;
 import ui.buttons.Button;
 import ui.buttons.PauseMenuButton;
 import utilz.constants.Constants;
@@ -30,6 +31,7 @@ public class PauseMenuBar extends ButtonBar {
         int yOffset = (buttonHeight + buttonHeight / 10);
 
         resumeBtn = new PauseMenuButton("Resume", buttonWidth, buttonHeight, buttonX, buttonY);
+        resumeBtn.setIsSelected(true);
         saveBtn = new PauseMenuButton("Save", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset));
         loadBtn = new PauseMenuButton("Load", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset*2));
         quitBtn = new PauseMenuButton("Quit", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset*3));
@@ -57,29 +59,51 @@ public class PauseMenuBar extends ButtonBar {
 
 
     public void keyPressed(KeyEvent e) {
-        resetSelected();
         switch(e.getKeyCode()) {
             case Constants.KeyboardConstants.UP:
                 if (selectedBtn == RESUME) {
-                    selectedBtn = QUIT; quitBtn.setIsSelected(true);
+                    selectedBtn = QUIT; 
+                    updateSelection(resumeBtn, quitBtn);
                 } else if (selectedBtn == SAVE) {
                     selectedBtn = RESUME; 
-                    resumeBtn.setIsSelected(true);
+                    updateSelection(saveBtn, resumeBtn);
                 } else if (selectedBtn == LOAD) {
                     selectedBtn = SAVE; 
-                    saveBtn.setIsSelected(true);
+                    updateSelection(loadBtn, saveBtn);
                 } else if (selectedBtn == QUIT) {
                     selectedBtn = LOAD; 
-                    loadBtn.setIsSelected(true);
+                    updateSelection(quitBtn, loadBtn);
                 } //if
                 break;
             case Constants.KeyboardConstants.DOWN:
-                if (selectedBtn == RESUME) selectedBtn = SAVE;
-                else if (selectedBtn == SAVE) selectedBtn = LOAD;
-                else if (selectedBtn == LOAD) selectedBtn = QUIT;
-                else if (selectedBtn == QUIT) selectedBtn = RESUME;
+                if (selectedBtn == RESUME) {
+                    selectedBtn = SAVE;
+                    updateSelection(resumeBtn, saveBtn);
+                } else if (selectedBtn == SAVE) {
+                    selectedBtn = LOAD;
+                    updateSelection(saveBtn, loadBtn);
+                } else if (selectedBtn == LOAD) {
+                    selectedBtn = QUIT;
+                    updateSelection(loadBtn, quitBtn);
+                }
+                else if (selectedBtn == QUIT) {
+                    selectedBtn = RESUME;
+                    resumeBtn.setIsSelected(true);
+                    quitBtn.setIsSelected(false);
+                }
+                break;
+            case Constants.KeyboardConstants.ENTER:
+                if (selectedBtn == RESUME) GameStates.GameState = GameStates.PLAYING;
+                else if (selectedBtn == SAVE); //Save needs to be implemented still.
+                else if (selectedBtn == LOAD); //Load needs to be implemented still.
+                else if (selectedBtn == QUIT) System.exit(0); //The "Are you sure you want to quit" is not implemented yet
                 break;
         } 
+    }
+
+    private void updateSelection(PauseMenuButton oldSelec, PauseMenuButton newSelec) {
+        oldSelec.setIsSelected(false);
+        newSelec.setIsSelected(true);
     }
 
     private void resetSelected() {
@@ -91,7 +115,25 @@ public class PauseMenuBar extends ButtonBar {
 
 
     public void mouseClicked(int x, int y) {
-        checkBtnBounds(x, y);
+        if ((resumeBtn.getBounds().contains(x, (y - 25))) ||
+                (resumeBtn.getBounds().contains(x, (y + 25)))) {
+                GameStates.GameState = GameStates.PLAYING;
+        } else if ((saveBtn.getBounds().contains(x, (y - 25))) ||
+                (saveBtn.getBounds().contains(x, (y + 25)))) {
+
+                //need to implement the save functionality
+        } else if ((loadBtn.getBounds().contains(x, (y - 25))) ||
+                (loadBtn.getBounds().contains(x, (y + 25)))) {
+
+                //need to implement the load functionality
+        } else if ((quitBtn.getBounds().contains(x, (y - 25))) ||
+                (quitBtn.getBounds().contains(x, (y + 25)))) {
+                //Need to implement the "Are you sure you want to quit?" and prompt
+                //the user to save the game.
+                System.exit(0);
+        } else {
+            return;
+        }
     }
 
     public void mouseMoved(int x, int y) {
