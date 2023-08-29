@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class MainMenuBtn extends Button {
     static float opacity = 255;

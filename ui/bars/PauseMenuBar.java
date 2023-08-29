@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import ui.buttons.Button;
 import ui.buttons.PauseMenuButton;
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class PauseMenuBar extends ButtonBar {
     private PauseMenuButton resumeBtn, saveBtn, loadBtn, quitBtn;

@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import render.Game;
 import ui.bars.MainMenuBar;
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class MainMenu implements GameStateInterface {
     private Game game;

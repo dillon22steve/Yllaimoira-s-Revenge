@@ -3,7 +3,7 @@ package ui.buttons;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class PauseMenuButton extends Button {
 

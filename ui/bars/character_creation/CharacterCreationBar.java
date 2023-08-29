@@ -7,8 +7,8 @@ import java.awt.event.KeyEvent;
 import gamestate.GameStates;
 import ui.bars.ButtonBar;
 import ui.buttons.CharCreatBtn;
-import utilz.Constants;
 import utilz.Enums;
+import utilz.constants.Constants;
 
 public class CharacterCreationBar extends ButtonBar {
     CharCreatBtn[] btns = null;

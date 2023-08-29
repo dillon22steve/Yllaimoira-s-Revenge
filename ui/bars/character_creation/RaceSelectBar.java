@@ -4,8 +4,9 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import ui.buttons.CharCreatBtn;
-import utilz.Constants;
 import utilz.Enums;
+import utilz.constants.Constants;
+import utilz.constants.RaceConstants;
 
 public class RaceSelectBar extends CharacterCreationBar {
     CharCreatBtn[] races = {
@@ -40,59 +41,59 @@ public class RaceSelectBar extends CharacterCreationBar {
 
     private void drawRaceDescr(Graphics g, int race) {
         switch(race) {
-            case Constants.Races.HUMAN:
+            case RaceConstants.Races.HUMAN:
                 selectedName = "Human";
-                desc = Constants.RaceDescriptions.HUMAN_DESC;
+                desc = RaceConstants.RaceDescriptions.HUMAN_DESC;
                 attributes = "All ability scores increase by 1";
                 break;
-            case Constants.Races.HIGH_ELF:
+            case RaceConstants.Races.HIGH_ELF:
                 selectedName = "High Elf";
-                desc = Constants.RaceDescriptions.HIGH_ELF_DESC;
+                desc = RaceConstants.RaceDescriptions.HIGH_ELF_DESC;
                 attributes = "Dexterity + 2,   Intelligence + 1";
                 break;
-            case Constants.Races.WOOD_ELF:
+            case RaceConstants.Races.WOOD_ELF:
                 selectedName = "Wood Elf";
-                desc = Constants.RaceDescriptions.WOOD_ELF_DESC;
+                desc = RaceConstants.RaceDescriptions.WOOD_ELF_DESC;
                 attributes = "Dexterity + 2,   Wisdom + 1";
                 break;
-            case Constants.Races.DARK_ELF:
+            case RaceConstants.Races.DARK_ELF:
                 selectedName = "Dark Elf";
-                desc = Constants.RaceDescriptions.DARK_ELF_DESC;
+                desc = RaceConstants.RaceDescriptions.DARK_ELF_DESC;
                 attributes = "Dexterity + 2,   Charisma + 1";
                 break;
-            case Constants.Races.HALF_ELF:
+            case RaceConstants.Races.HALF_ELF:
                 selectedName = "Half-Elf";
-                desc = Constants.RaceDescriptions.HALF_ELF_DESC;
+                desc = RaceConstants.RaceDescriptions.HALF_ELF_DESC;
                 attributes = "Charisma + 2,   Two other ability scores + 1";
                 break;
-            case Constants.Races.DWARF:
+            case RaceConstants.Races.DWARF:
                 selectedName = "Dwarf";
-                desc = Constants.RaceDescriptions.DWARF_DESC;
+                desc = RaceConstants.RaceDescriptions.DWARF_DESC;
                 attributes = "Constitution + 2";
                 break;
-            case Constants.Races.TIEFLING:
+            case RaceConstants.Races.TIEFLING:
                 selectedName = "Tiefling";
-                desc = Constants.RaceDescriptions.TIEFLING_DESC;
+                desc = RaceConstants.RaceDescriptions.TIEFLING_DESC;
                 attributes = "Intelligence + 1,   Charisma + 2";
                 break;
-            case Constants.Races.GNOME:
+            case RaceConstants.Races.GNOME:
                 selectedName = "Gnome";
-                desc = Constants.RaceDescriptions.GNOME_DESC;
+                desc = RaceConstants.RaceDescriptions.GNOME_DESC;
                 attributes = "Intelligence + 2";
                 break;
-            case Constants.Races.DRAGONBORN:
+            case RaceConstants.Races.DRAGONBORN:
                 selectedName = "Dragonborn";
-                desc = Constants.RaceDescriptions.DRAGONBORN_DESC;
+                desc = RaceConstants.RaceDescriptions.DRAGONBORN_DESC;
                 attributes = "Strengh + 2,   Charisma + 1";
                 break;
-            case Constants.Races.HALFLING:
+            case RaceConstants.Races.HALFLING:
                 selectedName = "Halfling";
-                desc = Constants.RaceDescriptions.HALFLING_DESC;
+                desc = RaceConstants.RaceDescriptions.HALFLING_DESC;
                 attributes = "Dexterity + 2";
                 break;
-            case Constants.Races.HALF_ORC:
+            case RaceConstants.Races.HALF_ORC:
                 selectedName = "Half-Orc";
-                desc = Constants.RaceDescriptions.HALF_ORC_DESC;
+                desc = RaceConstants.RaceDescriptions.HALF_ORC_DESC;
                 attributes = "Strength +2,   Constitution + 1";
                 break;
         } //switch

@@ -3,7 +3,8 @@ package ui.bars.character_creation;
 import java.awt.Graphics;
 
 import ui.buttons.CharCreatBtn;
-import utilz.Constants;
+import utilz.constants.ClassConstants;
+import utilz.constants.Constants;
 
 public class ClassSelectBar extends CharacterCreationBar {
 
@@ -33,45 +34,45 @@ public class ClassSelectBar extends CharacterCreationBar {
 
     private void drawClassDecription(Graphics g, int classId) {
         switch(classId) {
-            case Constants.Classes.BARBARIAN:
+            case ClassConstants.Classes.BARBARIAN:
                 selectedName = "Barbarian";
-                desc = Constants.ClassDescriptions.BARBARIAN_DESC;
+                desc = ClassConstants.ClassDescriptions.BARBARIAN_DESC;
                 break;
-            case Constants.Classes.BARD:
+            case ClassConstants.Classes.BARD:
                 selectedName = "Bard";
-                desc = Constants.ClassDescriptions.BARD_DESC;
+                desc = ClassConstants.ClassDescriptions.BARD_DESC;
                 break;
-            case Constants.Classes.CLERIC:
+            case ClassConstants.Classes.CLERIC:
                 selectedName = "Cleric";
-                desc = Constants.ClassDescriptions.CLERIC_DESC;
+                desc = ClassConstants.ClassDescriptions.CLERIC_DESC;
                 break;
-            case Constants.Classes.DRUID:
+            case ClassConstants.Classes.DRUID:
                 selectedName = "Druid";
-                desc = Constants.ClassDescriptions.DRUID_DESC;
+                desc = ClassConstants.ClassDescriptions.DRUID_DESC;
                 break;
-            case Constants.Classes.FIGHTER:
+            case ClassConstants.Classes.FIGHTER:
                 selectedName = "Fighter";
-                desc = Constants.ClassDescriptions.FIGHTER_DESC;
+                desc = ClassConstants.ClassDescriptions.FIGHTER_DESC;
                 break;
-            case Constants.Classes.RANGER:
+            case ClassConstants.Classes.RANGER:
                 selectedName = "Ranger";
-                desc = Constants.ClassDescriptions.RANGER_DESC;
+                desc = ClassConstants.ClassDescriptions.RANGER_DESC;
                 break;
-            case Constants.Classes.ROGUE:
+            case ClassConstants.Classes.ROGUE:
                 selectedName = "Rogue";
-                desc = Constants.ClassDescriptions.ROGUE_DESC;
+                desc = ClassConstants.ClassDescriptions.ROGUE_DESC;
                 break;
-            case Constants.Classes.SORCERER:
+            case ClassConstants.Classes.SORCERER:
                 selectedName = "Sorcerer";
-                desc = Constants.ClassDescriptions.SORCERER_DESC;
+                desc = ClassConstants.ClassDescriptions.SORCERER_DESC;
                 break;
-            case Constants.Classes.WARLOCK:
+            case ClassConstants.Classes.WARLOCK:
                 selectedName = "Warlock";
-                desc = Constants.ClassDescriptions.WARLOCK_DESC;
+                desc = ClassConstants.ClassDescriptions.WARLOCK_DESC;
                 break;
-            case Constants.Classes.WIZARD:
+            case ClassConstants.Classes.WIZARD:
                 selectedName = "Wizard";
-                desc = Constants.ClassDescriptions.WIZARD_DESC;
+                desc = ClassConstants.ClassDescriptions.WIZARD_DESC;
                 break;
         }
 

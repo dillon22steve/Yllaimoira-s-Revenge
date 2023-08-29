@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import gamestate.GameStates;
-import utilz.Constants;
 import ui.buttons.*;
+import utilz.constants.Constants;
 import render.Game;
 
 public class MainMenuBar extends ButtonBar {

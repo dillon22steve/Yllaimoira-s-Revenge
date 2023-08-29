@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class Map implements GameStateInterface {
 

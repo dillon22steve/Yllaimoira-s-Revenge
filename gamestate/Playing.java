@@ -3,7 +3,7 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-import utilz.Constants;
+import utilz.constants.Constants;
 
 public class Playing implements GameStateInterface {
 
