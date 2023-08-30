@@ -3,23 +3,26 @@ package ui.bars.character_creation;
 import java.awt.Graphics;
 
 import ui.buttons.CharCreatBtn;
+import utilz.HelperMethods;
 import utilz.constants.ClassConstants;
 import utilz.constants.Constants;
 
 public class ClassSelectBar extends CharacterCreationBar {
+    int btnYStart = HelperMethods.calcY(100);
+    int btnSpacing = HelperMethods.calcY(80);
 
     CharCreatBtn[] classes = {
-        new CharCreatBtn("Barbarian", 75, 40, 50, 100),
-        new CharCreatBtn("Bard", 75, 40, 50, 170),
-        new CharCreatBtn("Cleric", 75, 40, 50, 240),
-        new CharCreatBtn("Druid", 75, 40, 50, 310),
-        new CharCreatBtn("Fighter", 75, 40, 50, 380),
-        new CharCreatBtn("Paladin", 75, 40, 50, 450),
-        new CharCreatBtn("Ranger", 75, 40, 50, 520),
-        new CharCreatBtn("Rogue", 75, 40, 50, 590),
-        new CharCreatBtn("Sorcerer", 75, 40, 50, 660),
-        new CharCreatBtn("Warlock", 75, 40, 50, 730),
-        new CharCreatBtn("Wizard", 75, 40, 50, 800),
+        new CharCreatBtn("Barbarian", 75, 40, 50, btnYStart),
+        new CharCreatBtn("Bard", 75, 40, 50, (btnYStart + btnSpacing)),
+        new CharCreatBtn("Cleric", 75, 40, 50, (btnYStart + btnSpacing*2)),
+        new CharCreatBtn("Druid", 75, 40, 50, (btnYStart + btnSpacing*3)),
+        new CharCreatBtn("Fighter", 75, 40, 50, (btnYStart + btnSpacing*4)),
+        new CharCreatBtn("Paladin", 75, 40, 50, (btnYStart + btnSpacing*5)),
+        new CharCreatBtn("Ranger", 75, 40, 50, (btnYStart + btnSpacing*6)),
+        new CharCreatBtn("Rogue", 75, 40, 50, (btnYStart + btnSpacing*7)),
+        new CharCreatBtn("Sorcerer", 75, 40, 50, (btnYStart + btnSpacing*8)),
+        new CharCreatBtn("Warlock", 75, 40, 50, (btnYStart + btnSpacing*9)),
+        new CharCreatBtn("Wizard", 75, 40, 50, (btnYStart + btnSpacing*10)),
     };
 
     public ClassSelectBar(int width, int height, int xPos, int yPos) {
@@ -77,10 +80,13 @@ public class ClassSelectBar extends CharacterCreationBar {
         }
 
         g.setFont(Constants.Fonts.CHAR_CREAT_RACE_NAME_FONT);
-        g.drawString("Class:", 350, 130);
-        g.drawString(selectedName, 650, 130);
-        yPos = 220;
-        g.drawString("Description: ", 350, yPos);
+        int stringY = HelperMethods.calcY(130);
+        int stringX = HelperMethods.calcX(350);
+        g.drawString("Class:", stringX, stringY);
+        g.drawString(selectedName, HelperMethods.calcX(650), stringY);
+
+        yPos = HelperMethods.calcY(220);
+        g.drawString("Description: ", stringX, yPos);
 
         int start = 0;
         int end = 72;
@@ -95,7 +101,7 @@ public class ClassSelectBar extends CharacterCreationBar {
             } //if
             String descSubStr = desc.substring(start, end);
             g.setFont(Constants.Fonts.CHAR_CREAT_DESC_FONT);
-            g.drawString(descSubStr, 650, yPos);
+            g.drawString(descSubStr, HelperMethods.calcX(650), yPos);
 
             start = end;
             end += 72;

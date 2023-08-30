@@ -36,25 +36,19 @@ public class HelperMethods {
             return 768;
         } //if
     } //CalcPanelHeight
-
-    public static void setScalarMultiplyer() {
-        int maxWidth = 1920;
-        int maxHeight = 1080;
-        double screenSize = GamePanel.GAMEPANEL_WIDTH * GamePanel.GAMEPANEL_HEIGHT;
-
-        Constants.X_SCALAR = (maxWidth / maxWidth);
-        Constants.Y_SCALAR = (maxHeight / maxHeight);
-        Constants.FONT_SCALAR = (screenSize / (maxHeight * maxWidth));
-    }
     */
 
     
     public static double calcFontSize(int sizeAtMaxScreen) {
-        return (sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080);
+        return ((sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080));
     }
 
     public static int calcX(int xAtMaxScreen) {
-        return (xAtMaxScreen * GamePanel.SCREEN_WIDTH) / 1920;
+        return ((xAtMaxScreen * GamePanel.SCREEN_WIDTH) / 1920);
+    }
+
+    public static int calcY(int atMaxScreen) {
+        return ((atMaxScreen * GamePanel.SCREEN_HEIGHT) / 1080);
     }
 
     public static int calcHorizCenter(Graphics g, int w, String s) {

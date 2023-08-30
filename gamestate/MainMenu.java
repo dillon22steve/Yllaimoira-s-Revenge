@@ -11,17 +11,15 @@ import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class MainMenu implements GameStateInterface {
-    private Game game;
     private MainMenuBar mainMenuBar;
 
-    public MainMenu(Game game) {
-        this.game = game;
-        this.mainMenuBar = new MainMenuBar(game);
+    public MainMenu() {
+        this.mainMenuBar = new MainMenuBar();
     }
 
     public void render(Graphics g) {
-        this.drawTitle(g);
         this.mainMenuBar.draw(g);
+        this.drawTitle(g);
     }
 
     private void drawTitle(Graphics g) {
@@ -29,6 +27,7 @@ public class MainMenu implements GameStateInterface {
         g.setColor(Color.WHITE);
         String title = "YLLAIMORA'S REVENGE";
         int xPos = HelperMethods.calcHorizCenter(g, GamePanel.SCREEN_WIDTH, title);
+        //int xPos = HelperMethods.calcHorizCenter(g, GamePanel.GAMEPANEL_WIDTH, title);
         g.drawString(title, xPos, 140);
     }
 
@@ -57,6 +56,7 @@ public class MainMenu implements GameStateInterface {
     }
 
     public void mouseWheelMoved(int wheelRotation) {
+        this.mainMenuBar.mouseWheelMoved(wheelRotation);
     }
     
 }

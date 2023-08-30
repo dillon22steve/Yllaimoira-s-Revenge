@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import gamestate.GameStates;
+import render.GamePanel;
 import ui.bars.ButtonBar;
 import ui.buttons.CharCreatBtn;
 import utilz.Enums;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class CharacterCreationBar extends ButtonBar {
@@ -25,7 +27,7 @@ public class CharacterCreationBar extends ButtonBar {
 
     public CharacterCreationBar(int width, int height, int xPos, int yPos) {
         super(width, height, xPos, yPos);
-        confirmSelecBtn = new CharCreatBtn("Yes", 75, 40, 850, 800);
+        confirmSelecBtn = new CharCreatBtn("Yes", 75, 40, HelperMethods.calcX(850), HelperMethods.calcY(800));
     }
 
     public void drawButtons(Graphics g) {
@@ -48,7 +50,8 @@ public class CharacterCreationBar extends ButtonBar {
     private void drawConfirmSelection(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(Constants.Fonts.CHAR_CREAT_BTN_FONT);
-        g.drawString(("Continue as a " + selectedName + "?"), 500, 800);
+        String contPrompt = "Continue as a " + selectedName + "?";
+        g.drawString(contPrompt, HelperMethods.calcX(500), HelperMethods.calcY(800));
         confirmSelecBtn.draw(g);
     }
 

@@ -6,8 +6,9 @@ import java.awt.event.KeyEvent;
 
 import gamestate.GameStates;
 import ui.buttons.*;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
-import render.Game;
+import render.GamePanel;
 
 public class MainMenuBar extends ButtonBar {
     private static final int NEWGAMEID = 1;
@@ -16,26 +17,25 @@ public class MainMenuBar extends ButtonBar {
     private static final int QUITID = 4;
     private int selectedBtn = 1;
 
-    private Game game;
-
     MainMenuBtn continueBtn, loadBtn, quitBtn, newGameBtn;
     boolean mouseOver = false;
 
-    public MainMenuBar(Game game) {
-        super(300, 700, (int)(game.getGamePanel().getWidth() / 2 - 150), 300);
-        this.game = game;
+    public MainMenuBar() {
+        //super(300, 700, (int)(game.getGamePanel().getWidth() / 2 - 150), 300);
+        //super(GamePanel.GAMEPANEL_WIDTH, GamePanel.GAMEPANEL_HEIGHT, 0, 0);
+        super(GamePanel.SCREEN_WIDTH, GamePanel.SCREEN_HEIGHT, 0, 0);
         initBtns();
     }
 
     public void initBtns() {
         int btnXPos = (this.xPos + (this.width / 2 - 50));
 
-        this.newGameBtn = new MainMenuBtn("New Game", 100, 30, btnXPos, 330);
+        this.newGameBtn = new MainMenuBtn("New Game", 100, 30, btnXPos, HelperMethods.calcY(330));
         this.newGameBtn.setSelected(true);
 
-        this.continueBtn = new MainMenuBtn("Continue", 100, 30, btnXPos, 430);
-        this.loadBtn = new MainMenuBtn("Load", 100, 30, btnXPos, 530);
-        this.quitBtn = new MainMenuBtn("Quit", 100, 30, btnXPos, 630);
+        this.continueBtn = new MainMenuBtn("Continue", 100, 30, btnXPos, HelperMethods.calcY(430));
+        this.loadBtn = new MainMenuBtn("Load", 100, 30, btnXPos, HelperMethods.calcY(530));
+        this.quitBtn = new MainMenuBtn("Quit", 100, 30, btnXPos, HelperMethods.calcY(630));
     }
 
     public void draw(Graphics g) {
@@ -94,6 +94,20 @@ public class MainMenuBar extends ButtonBar {
                     newGameBtn.setSelected(true);
                 }
                 break;
+            case Constants.KeyboardConstants.ENTER:
+                if (selectedBtn == NEWGAMEID) {
+                    GameStates.GameState = GameStates.CHARACTER_CREATION;
+                } else if (selectedBtn == CONTINUEID) {
+                    //need to implement a method that loads the last save.
+                } else if (selectedBtn == LOADID) {
+                    //need to implement a method that lists all of the saved files and lets
+                    //the user choose which one to load.
+                } else if (selectedBtn == QUITID) {
+                    System.exit(0);
+                    //need to implement a method that asks the user if they're sure they want
+                    //to quit the game.
+                }
+                break;
         }
     }
 
@@ -106,7 +120,6 @@ public class MainMenuBar extends ButtonBar {
 
         } else if (newGameBtn.getBounds().contains(x, y)) {
             GameStates.GameState = GameStates.CHARACTER_CREATION;
-            //GameStates.GameState = GameStates.PLAYING;
         } else if (quitBtn.getBounds().contains(x, y)) {
             System.exit(0);
         }
@@ -157,5 +170,56 @@ public class MainMenuBar extends ButtonBar {
         loadBtn.setSelected(false);
         continueBtn.setSelected(false);
         quitBtn.setSelected(false);
+    }
+
+    public void mouseWheelMoved(int wheelRotation) {
+        if (wheelRotation > 0) {
+            resetSelection();
+            switch(selectedBtn) {
+                case NEWGAMEID:
+                    selectedBtn = QUITID;
+                    newGameBtn.setSelected(false);
+                    quitBtn.setSelected(true);
+                    break;
+                case CONTINUEID:
+                    selectedBtn = NEWGAMEID;
+                    continueBtn.setSelected(false);
+                    newGameBtn.setSelected(true);
+                    break;
+                case LOADID:
+                    selectedBtn = CONTINUEID;
+                    loadBtn.setSelected(false);
+                    continueBtn.setSelected(true);
+                    break;
+                case QUITID:
+                    selectedBtn = LOADID;
+                    quitBtn.setSelected(false);
+                    loadBtn.setSelected(true);
+                    break;
+            }
+        } else {
+            switch(selectedBtn) {
+                case NEWGAMEID:
+                    selectedBtn = CONTINUEID;
+                    newGameBtn.setSelected(false);
+                    continueBtn.setSelected(true);
+                    break;
+                case CONTINUEID:
+                    selectedBtn = LOADID;
+                    continueBtn.setSelected(false);
+                    loadBtn.setSelected(true);
+                    break;
+                case LOADID:
+                    selectedBtn = QUITID;
+                    loadBtn.setSelected(false);
+                    quitBtn.setSelected(true);
+                    break;
+                case QUITID:
+                    selectedBtn = NEWGAMEID;
+                    quitBtn.setSelected(false);
+                    newGameBtn.setSelected(true);
+                    break;
+            }
+        }
     }
 }

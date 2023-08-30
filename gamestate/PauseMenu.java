@@ -12,8 +12,10 @@ public class PauseMenu implements GameStateInterface {
     public PauseMenu() {
         int width = 200;
         int height = 350;
-        int x = GamePanel.GAMEPANEL_WIDTH/2 - width/2;
-        int y = GamePanel.GAMEPANEL_HEIGHT/2 - height/2;
+        // int x = GamePanel.GAMEPANEL_WIDTH/2 - width/2;
+        // int y = GamePanel.GAMEPANEL_HEIGHT/2 - height/2;
+        int x = GamePanel.SCREEN_WIDTH/2 - width/2;
+        int y = GamePanel.SCREEN_HEIGHT/2 - height/2;
         pauseMenu = new PauseMenuBar(width, height, x, y);
     }
 

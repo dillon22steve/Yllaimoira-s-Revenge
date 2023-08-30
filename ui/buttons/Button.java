@@ -2,14 +2,16 @@ package ui.buttons;
 
 import java.awt.Rectangle;
 
+import utilz.HelperMethods;
+
 public class Button {
     int width, height, xPos, yPos;
     String txt;
     private Rectangle bounds;
 
     public Button(String txt, int width, int height, int xPos, int yPos) {
-        this.width = width;
-        this.height = height;
+        this.width = HelperMethods.calcX(width);
+        this.height = HelperMethods.calcY(height);
         this.xPos = xPos;
         this.yPos = yPos;
         this.txt = txt;

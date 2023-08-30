@@ -6,18 +6,14 @@ import utilz.HelperMethods;
 
 public class Constants {
 
-    public static double X_SCALAR = 1.0;
-    public static double Y_SCALAR = 1.0;
-    public static double FONT_SCALAR = 1.0;
-
     public class Fonts {
         public static Font MAIN_MENU_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)HelperMethods.calcFontSize(24));
         public static Font MAIN_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)HelperMethods.calcFontSize(64));
-        public static Font CHAR_CREAT_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, 24);
-        public static Font CHAR_CREAT_RACE_NAME_FONT = new Font("Bookman Old Style", Font.BOLD, 32);
-        public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, 18);
-        public static Font PAUSE_MENU_BTN_FONT = new Font("Bookman Old Style", Font.ITALIC, 18);
-        public static Font PAUSE_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.BOLD, 24);
+        public static Font CHAR_CREAT_BTN_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)HelperMethods.calcFontSize(24));
+        public static Font CHAR_CREAT_RACE_NAME_FONT = new Font("Bookman Old Style", Font.BOLD, (int)HelperMethods.calcFontSize(32));
+        public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)HelperMethods.calcFontSize(18));
+        public static Font PAUSE_MENU_BTN_FONT = new Font("Bookman Old Style", Font.ITALIC, (int)HelperMethods.calcFontSize(18));
+        public static Font PAUSE_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.BOLD, (int)HelperMethods.calcFontSize(24));
     }
 
     public class KeyboardConstants {

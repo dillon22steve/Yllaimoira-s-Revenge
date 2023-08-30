@@ -5,8 +5,10 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import gamestate.GameStates;
+import render.GamePanel;
 import ui.buttons.Button;
 import ui.buttons.PauseMenuButton;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class PauseMenuBar extends ButtonBar {
@@ -24,11 +26,11 @@ public class PauseMenuBar extends ButtonBar {
     }
 
     private void initButtons() {
-        int buttonWidth = (this.width / 3) * 2;
-        int buttonHeight = (this.height / 6);
+        int buttonWidth = 70;
+        int buttonHeight = 30;
         int buttonX = (this.xPos + this.width/2 - buttonWidth/2);
-        int buttonY = this.yPos + buttonHeight;
-        int yOffset = (buttonHeight + buttonHeight / 10);
+        int buttonY = this.yPos + 100;
+        int yOffset = (buttonHeight + 10);
 
         resumeBtn = new PauseMenuButton("Resume", buttonWidth, buttonHeight, buttonX, buttonY);
         resumeBtn.setIsSelected(true);
@@ -47,7 +49,8 @@ public class PauseMenuBar extends ButtonBar {
     private void drawTitle(Graphics g) {
         g.setFont(Constants.Fonts.PAUSE_MENU_TITLE_FONT);
         g.setColor(Color.WHITE);
-        g.drawString("GAME PAUSED", (this.xPos + this.width/20), (this.yPos + this.height/10));
+        String title = "GAME PAUSED";
+        g.drawString(title, HelperMethods.calcHorizCenter(g, GamePanel.SCREEN_WIDTH, title), (this.yPos + this.height/10));
     }
     private void drawBtns(Graphics g) {
         resumeBtn.draw(g);
@@ -115,19 +118,13 @@ public class PauseMenuBar extends ButtonBar {
 
 
     public void mouseClicked(int x, int y) {
-        if ((resumeBtn.getBounds().contains(x, (y - 25))) ||
-                (resumeBtn.getBounds().contains(x, (y + 25)))) {
+        if ((resumeBtn.getBounds().contains(x, y))) {
                 GameStates.GameState = GameStates.PLAYING;
-        } else if ((saveBtn.getBounds().contains(x, (y - 25))) ||
-                (saveBtn.getBounds().contains(x, (y + 25)))) {
-
+        } else if ((saveBtn.getBounds().contains(x, y))) {
                 //need to implement the save functionality
-        } else if ((loadBtn.getBounds().contains(x, (y - 25))) ||
-                (loadBtn.getBounds().contains(x, (y + 25)))) {
-
+        } else if ((loadBtn.getBounds().contains(x, y))) {
                 //need to implement the load functionality
-        } else if ((quitBtn.getBounds().contains(x, (y - 25))) ||
-                (quitBtn.getBounds().contains(x, (y + 25)))) {
+        } else if ((quitBtn.getBounds().contains(x, y))) {
                 //Need to implement the "Are you sure you want to quit?" and prompt
                 //the user to save the game.
                 System.exit(0);
@@ -174,26 +171,19 @@ public class PauseMenuBar extends ButtonBar {
 
 
     public void checkBtnBounds(int x, int y) {
-        if ((resumeBtn.getBounds().contains(x, (y - 25))) ||
-                (resumeBtn.getBounds().contains(x, (y + 25)))) {
+        resetSelected();
+        if ((resumeBtn.getBounds().contains(x, y))) {
                 selectedBtn = RESUME;
                 resumeBtn.setIsSelected(true);
-        } else if ((saveBtn.getBounds().contains(x, (y - 25))) ||
-                (saveBtn.getBounds().contains(x, (y + 25)))) {
+        } else if ((saveBtn.getBounds().contains(x, y))) {
                 selectedBtn = QUIT;
                 saveBtn.setIsSelected(true);
-        } else if ((loadBtn.getBounds().contains(x, (y - 25))) ||
-                (loadBtn.getBounds().contains(x, (y + 25)))) {
+        } else if ((loadBtn.getBounds().contains(x, y)) ) {
                 selectedBtn = LOAD;
                 loadBtn.setIsSelected(true);
-        } else if ((quitBtn.getBounds().contains(x, (y - 25))) ||
-                (resumeBtn.getBounds().contains(x, (y + 25)))) {
+        } else if ((quitBtn.getBounds().contains(x, y)) ) {
                 selectedBtn = QUIT;
                 quitBtn.setIsSelected(true);
-        } else {
-            return;
         }
-
-        resetSelected();
     }
 }

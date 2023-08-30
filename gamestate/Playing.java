@@ -8,7 +8,7 @@ import utilz.constants.Constants;
 public class Playing implements GameStateInterface {
 
     public void render(Graphics g) {
-        g.drawString("Hello World", 50, 50);
+        
     }
 
     @Override

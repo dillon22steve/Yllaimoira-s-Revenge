@@ -29,9 +29,9 @@ public class PauseMenuButton extends Button {
     private void drawText(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(Constants.Fonts.PAUSE_MENU_BTN_FONT);
-        g.drawString(txt, xPos, yPos);
+        g.drawString(txt, xPos, (yPos + height / 2));
         if (isSelected) {
-            g.drawString(">", this.xPos - 10, this.yPos);
+            g.drawString(">", this.xPos - 10, (yPos + height / 2));
         }
     }
 

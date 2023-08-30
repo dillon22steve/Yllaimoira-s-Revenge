@@ -5,22 +5,27 @@ import java.awt.event.KeyEvent;
 
 import ui.buttons.CharCreatBtn;
 import utilz.Enums;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 import utilz.constants.RaceConstants;
 
 public class RaceSelectBar extends CharacterCreationBar {
+    int btnX = HelperMethods.calcX(50);
+    int btnYStart = HelperMethods.calcY(100);
+    int btnSpacing = HelperMethods.calcY(80);
+
     CharCreatBtn[] races = {
-        new CharCreatBtn("Human", 75, 40, 50, 100),
-        new CharCreatBtn("High Elf", 75, 40, 50, 170),
-        new CharCreatBtn("Wood Elf", 75, 40, 50, 240),
-        new CharCreatBtn("Dark Elf", 75, 40, 50, 310),
-        new CharCreatBtn("Half-Elf", 75, 40, 50, 380),
-        new CharCreatBtn("Dwarf", 75, 40, 50, 450),
-        new CharCreatBtn("Tiefling", 75, 40, 50, 520),
-        new CharCreatBtn("Gnome", 75, 40, 50, 590),
-        new CharCreatBtn("Dragonborn", 75, 40, 50, 660),
-        new CharCreatBtn("Halfling", 75, 40, 50, 730),
-        new CharCreatBtn("Half-Orc", 75, 40, 50, 800),
+        new CharCreatBtn("Human", 75, 40, btnX, btnYStart),
+        new CharCreatBtn("High Elf", 75, 40, btnX, (btnYStart + btnSpacing)),
+        new CharCreatBtn("Wood Elf", 75, 40, btnX, (btnYStart + btnSpacing*2)),
+        new CharCreatBtn("Dark Elf", 75, 40, btnX, (btnYStart + btnSpacing*3)),
+        new CharCreatBtn("Half-Elf", 75, 40, btnX, (btnYStart + btnSpacing*4)),
+        new CharCreatBtn("Dwarf", 75, 40, btnX, (btnYStart + btnSpacing*5)),
+        new CharCreatBtn("Tiefling", 75, 40, btnX, (btnYStart + btnSpacing*6)),
+        new CharCreatBtn("Gnome", 75, 40, btnX, (btnYStart + btnSpacing*7)),
+        new CharCreatBtn("Dragonborn", 75, 40, btnX, (btnYStart + btnSpacing*8)),
+        new CharCreatBtn("Halfling", 75, 40, btnX, (btnYStart + btnSpacing*9)),
+        new CharCreatBtn("Half-Orc", 75, 40, btnX, (btnYStart + btnSpacing*10))
     };
 
 
