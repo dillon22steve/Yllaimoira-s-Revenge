@@ -9,15 +9,19 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class Map implements GameStateInterface {
 
     private BufferedImage atryaWorldMap;
     private boolean isWorldMap = true;
+    private int mapCoord, mapWidth, mapHeight;
+    private int stringX, stringY;
 
     public Map() {
         initImg();
+        initMapSize();
     }
 
     private void initImg() {
@@ -36,14 +40,22 @@ public class Map implements GameStateInterface {
 		}
     }
 
+    private void initMapSize() {
+        mapCoord = HelperMethods.calcX(50);
+        mapWidth = HelperMethods.calcX(1180);
+        mapHeight = HelperMethods.calcY(900);
+        stringX = HelperMethods.calcX(450);
+        stringY = HelperMethods.calcY(925);
+    }
+
     public void render(Graphics g) {
         if (isWorldMap) {
-            g.drawImage(atryaWorldMap, 50, 50, 1180, 900, null);
+            g.drawImage(atryaWorldMap, mapCoord, mapCoord, mapWidth, mapHeight, null);
             g.setFont(Constants.Fonts.MAIN_MENU_BTN_FONT);
             g.setColor(Color.WHITE);
-            g.drawString("<Press L for the local map>", 450, 925);
+            g.drawString("<Press L for the local map>", stringX, stringY);
         } else {
-            g.drawString("<Press W for the world map>", 450, 925);
+            g.drawString("<Press W for the world map>", stringX, stringY);
         }
     }
 
