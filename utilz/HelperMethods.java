@@ -40,15 +40,16 @@ public class HelperMethods {
 
     
     public static double calcFontSize(int sizeAtMaxScreen) {
-        return ((sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080));
+        //return ((sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080));
+        return calcY(sizeAtMaxScreen);
     }
 
     public static int calcX(int xAtMaxScreen) {
         return ((xAtMaxScreen * GamePanel.SCREEN_WIDTH) / 1920);
     }
 
-    public static int calcY(int atMaxScreen) {
-        return ((atMaxScreen * GamePanel.SCREEN_HEIGHT) / 1080);
+    public static int calcY(int yAtMaxScreen) {
+        return ((yAtMaxScreen * GamePanel.SCREEN_HEIGHT) / 1080);
     }
 
     public static int calcHorizCenter(Graphics g, int w, String s) {
