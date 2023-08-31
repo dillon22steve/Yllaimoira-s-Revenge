@@ -9,4 +9,5 @@ public class Enums {
 
         public static CharacterCreationStates State = RACE_SELECT;
     }
+    
 }

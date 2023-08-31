@@ -1,61 +1,30 @@
 package gamestate;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
-
-import utilz.HelperMethods;
-import utilz.constants.Constants;
+import map.*;
 
 public class Map implements GameStateInterface {
 
-    private BufferedImage atryaWorldMap;
-    private boolean isWorldMap = true;
-    private int mapCoord, mapWidth, mapHeight;
-    private int stringX, stringY;
+    public static final char WORLD_MAP = 0;
+    public static final char LOCAL_MAP = 1;
+    public static char CURRENT_MAP = WORLD_MAP;
+
+    private WorldMap worldMap;
+    private LocalMap localMap;
 
     public Map() {
-        initImg();
-        initMapSize();
+        this.worldMap = new WorldMap();
+        this.localMap = new LocalMap();
     }
 
-    private void initImg() {
-        InputStream is = getClass().getResourceAsStream("/res/Atrya.jpg");
-		
-		try {
-			atryaWorldMap = ImageIO.read(is);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				is.close();
-			} catch (IOException io) {
-				io.printStackTrace();
-			}
-		}
-    }
-
-    private void initMapSize() {
-        mapCoord = HelperMethods.calcX(50);
-        mapWidth = HelperMethods.calcX(1180);
-        mapHeight = HelperMethods.calcY(900);
-        stringX = HelperMethods.calcX(450);
-        stringY = HelperMethods.calcY(925);
-    }
 
     public void render(Graphics g) {
-        if (isWorldMap) {
-            g.drawImage(atryaWorldMap, mapCoord, mapCoord, mapWidth, mapHeight, null);
-            g.setFont(Constants.Fonts.MAIN_MENU_BTN_FONT);
-            g.setColor(Color.WHITE);
-            g.drawString("<Press L for the local map>", stringX, stringY);
+        if (CURRENT_MAP == WORLD_MAP) {
+            worldMap.render(g);
         } else {
-            g.drawString("<Press W for the world map>", stringX, stringY);
+            localMap.render(g);
         }
     }
 
@@ -67,34 +36,48 @@ public class Map implements GameStateInterface {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
-            case Constants.KeyboardConstants.ESC:
-                GameStates.GameState = GameStates.PLAYING;
+        switch(CURRENT_MAP) {
+            case WORLD_MAP:
+                worldMap.keyPressed(e);
                 break;
-            case 'L':
-                isWorldMap = false;
+            default:
+                localMap.keyPressed(e);
                 break;
-            case 'W':
-                isWorldMap = true;
-                break;
-        }
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
-    }
+        } //switch
+    } //keyPressed
 
     @Override
     public void mouseClicked(int x, int y) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-    }
+        switch(CURRENT_MAP) {
+            case WORLD_MAP:
+                worldMap.mouseClicked(x, y);
+                break;
+            default:
+                localMap.mouseClicked(x, y);
+                break;
+        } //switch
+    } //mouseClicked
 
     @Override
     public void mouseMoved(int x, int y) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
-    }
+        switch(CURRENT_MAP) {
+            case WORLD_MAP:
+                worldMap.mouseMoved(x, y);
+                break;
+            default:
+                localMap.mouseMoved(x, y);
+                break;
+        } //switch
+    } //mouseMoved
 
     public void mouseWheelMoved(int wheelRotation) {
-    }
-    
+        switch(CURRENT_MAP) {
+            case WORLD_MAP:
+                worldMap.mouseWheelMoved(wheelRotation);
+                break;
+            default:
+                localMap.mouseWheelMoved(wheelRotation);
+                break;
+        } //switch
+    } //mouseWheelMoved
 }

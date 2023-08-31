@@ -14,6 +14,7 @@ public class Constants {
         public static Font CHAR_CREAT_DESC_FONT = new Font("Bookman Old Style", Font.PLAIN, (int)HelperMethods.calcFontSize(18));
         public static Font PAUSE_MENU_BTN_FONT = new Font("Bookman Old Style", Font.ITALIC, (int)HelperMethods.calcFontSize(18));
         public static Font PAUSE_MENU_TITLE_FONT = new Font("Bookman Old Style", Font.BOLD, (int)HelperMethods.calcFontSize(24));
+        public static Font MAP_SELECTEDLOCATION_FONT = new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, (int)HelperMethods.calcFontSize(32));
     }
 
     public class KeyboardConstants {
