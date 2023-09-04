@@ -97,7 +97,7 @@ public class WorldMap extends map.Map {
     }
 
     public void mouseMoved(int x, int y) {
-        checkLocationBounds(x, y);
+        //checkLocationBounds(x, y);
     }
 
     public void mouseWheelMoved(int wheelRotation) {

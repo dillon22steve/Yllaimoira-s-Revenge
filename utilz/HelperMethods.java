@@ -31,24 +31,47 @@ public class HelperMethods {
 		} //try
 
         return imgToReturn;
-    }
+    } //LoadImage
     
+
+    
+
     public static double calcFontSize(int sizeAtMaxScreen) {
-        //return ((sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080));
         return calcY(sizeAtMaxScreen);
-    }
+    } //calcFontSize
+
+
+
 
     public static int calcX(int xAtMaxScreen) {
         return ((xAtMaxScreen * GamePanel.SCREEN_WIDTH) / 1920);
-    }
+    } //calcX
 
     public static int calcY(int yAtMaxScreen) {
         return ((yAtMaxScreen * GamePanel.SCREEN_HEIGHT) / 1080);
-    }
+    } //calcY
+
+
+
 
     public static int calcHorizCenter(Graphics g, int w, String s) {
         FontMetrics fm = g.getFontMetrics();
         return (w - fm.stringWidth(s)) / 2;
-    }
+    } //calcHorizCenter
+
+
+
+
+    public static int CalcTileSize(int sizeAtMaxScreen) {
+        return calcX(sizeAtMaxScreen);
+    } //CalcTileSize
+
+    public static int CalcTilesWide(int screenWidth, int tileSize) {
+        return (int)(Math.ceil((double)(screenWidth / tileSize)));
+    } //CalcTilesWide
+
+    public static int CalcTilesHigh(int screenHeight, int tileSize) {
+        return (int)(Math.ceil((double)(screenHeight / tileSize)));
+    } //CalcTilesWide
     
 }

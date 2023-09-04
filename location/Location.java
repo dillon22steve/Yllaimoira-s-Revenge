@@ -4,9 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
+
+import render.GamePanel;
+import utilz.HelperMethods;
+import utilz.constants.TileConstants;
 
 public class Location {
 
@@ -19,49 +20,30 @@ public class Location {
 
     
     public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap) {
-        initMap(mapFileName);
-
+        this.map = HelperMethods.LoadImage(mapFileName);
         this.locImg = locImg;
-        this.locData = new int[locImg.getWidth()][locImg.getHeight()];
+        this.locData = new int[locImg.getHeight()][locImg.getWidth()];
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
+        this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, 50, 50);
 
-        initBounds();
         loadLocation();
     }
 
-    private void initBounds() {
-        this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, 50, 50);
-    }
 
-    public void initMap(String mapFileName) {
-        InputStream is = getClass().getResourceAsStream("/res/" + mapFileName);
-		
-		try {
-			map = ImageIO.read(is);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				is.close();
-			} catch (IOException io) {
-				io.printStackTrace();
-			}
-		}
-    }
 
     private void loadLocation() {
         for (int y = 0; y < locImg.getHeight(); y++) {
             for (int x = 0; x < locImg.getWidth(); x++) {
                 Color c = new Color(locImg.getRGB(x, y));
                 int red = c.getRed();
-                int blue = c.getBlue();
-                int green = c.getGreen();
+                //int blue = c.getBlue();
+                //int green = c.getGreen();
 
                 loadTileData(red, x, y);
-                loadCharacters(green, x, y);
-                loadObjects(blue, x, y);
+                //loadCharacters(green, x, y);
+                //loadObjects(blue, x, y);
             } //for
         } //for
     } //loadLocation
@@ -79,27 +61,44 @@ public class Location {
     } //loadCharacters
 
     private void loadTileData(int red, int x, int y) {
-        locData[x][y] = red;
+        locData[y][x] = red;
     } //loadTileData
 
 
 
     public void draw(Graphics g) {
-        
-    }
+        for (int j = 0; j < locData.length; j++) {
+            for (int i = 0; i < locData[0].length; i++) {
+                int artIndex = locData[j][i];
+                int x = GamePanel.TILE_SIZE * i;
+                int y = GamePanel.TILE_SIZE * j;
+
+                if (artIndex < 9) {
+                    g.drawImage(TileConstants.IMG.ART[artIndex], x, y, GamePanel.TILE_SIZE, GamePanel.TILE_SIZE, null);
+                } else {
+                    //System.out.println(artIndex + "at x: " + i + " and y: " + j);
+                }
+            } //for
+        } //for
+    } //draw
+
+
+    public void drawMap(Graphics g) {
+        g.drawImage(map, 0, 0, GamePanel.SCREEN_WIDTH, GamePanel.SCREEN_HEIGHT, null);
+    } //drawMap
 
 
 
     public int getX() {
         return this.xPosWorldMap;
-    }
+    } //getX
     public int getY() {
         return this.yPosWorldMap;
-    }
+    } //getY
     public String getName() {
         return this.name;
-    }
+    } //getName
     public Rectangle getBounds() {
         return this.bounds;
-    }
+    } //getBounds
 }

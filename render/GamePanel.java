@@ -12,11 +12,12 @@ import java.awt.Toolkit;
 
 
 public class GamePanel extends JPanel {
-    public static int GAMEPANEL_WIDTH;
-    public static int GAMEPANEL_HEIGHT;
-
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
+
+    public static int TILE_SIZE;
+    public static int TILES_WIDE;
+    public static int TILES_HIGH;
 
     private Game game;
 
@@ -54,14 +55,12 @@ public class GamePanel extends JPanel {
         // SCREEN_HEIGHT = 900;
         screenSize = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        GAMEPANEL_WIDTH = 1536;
-        GAMEPANEL_HEIGHT = 864;
-        //Dimension testDimension = new Dimension(GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT);
+        TILE_SIZE = HelperMethods.CalcTileSize(64);
+        TILES_WIDE = HelperMethods.CalcTilesWide(SCREEN_WIDTH, TILE_SIZE);
+        TILES_HIGH = HelperMethods.CalcTilesWide(SCREEN_HEIGHT, TILE_SIZE);
 
         setMinimumSize(screenSize);
         //setMaximumSize(screenSize);
-        //setPreferredSize(screenSize);
-        //setPreferredSize(new Dimension(GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT));
         setPreferredSize(screenSize);
     }
 

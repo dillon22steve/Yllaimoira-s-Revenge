@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import location.Location;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 
 public class Playing implements GameStateInterface {
@@ -11,7 +12,7 @@ public class Playing implements GameStateInterface {
     private Location currLocation;
 
     public Playing() {
-		
+		currLocation = new Location("Atrya.jpg", HelperMethods.LoadImage("TestLevel.png"), "Test", 0, 0);
     }
 
     public void render(Graphics g) {

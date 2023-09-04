@@ -18,26 +18,18 @@ public class TileConstants {
     } //ID
 
     public class IMG {
-        public static BufferedImage GRASS;
-        public static BufferedImage WATER;
-        public static BufferedImage COBBLESTONE;
-        public static BufferedImage PLANK_VERT;
-        public static BufferedImage PLANK_HORI;
-        public static BufferedImage PLANK_UP_RIGHT;
-        public static BufferedImage PLANK_UP_LEFT;
-        public static BufferedImage PLANK_DOWN_RIGHT;
-        public static BufferedImage PLANK_DOWN_LEFT;
+        public static BufferedImage[] ART = new BufferedImage[9];
 
         public static void LoadImages() {
-            GRASS = HelperMethods.LoadImage("GrassBlock.jpg");
-            WATER = HelperMethods.LoadImage("WaterBlock.jpg");
-            COBBLESTONE = HelperMethods.LoadImage("CobblestoneBlock.jpg");
-            PLANK_VERT = HelperMethods.LoadImage("/planks/LightPlank.jpg");
-            PLANK_HORI = HelperMethods.LoadImage("/planks/LightPlankSide.jpg");
-            PLANK_UP_RIGHT = HelperMethods.LoadImage("/planks/LightPlankUpRight.jpg");
-            PLANK_UP_LEFT = HelperMethods.LoadImage("/planks/LightPlankUpLeft.jpg");
-            PLANK_DOWN_RIGHT = HelperMethods.LoadImage("/planks/LightPlankBottomRight.jpg");
-            PLANK_DOWN_LEFT = HelperMethods.LoadImage("/planks/LightPlankBottomLeft.jpg");
+            ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");;
+            ART[ID.WATER] = HelperMethods.LoadImage("WaterBlock.jpg");
+            ART[ID.COBBLESTONE] = HelperMethods.LoadImage("CobblestoneBlock.jpg");
+            ART[ID.PLANK_VERT] = HelperMethods.LoadImage("/planks/LightPlank.jpg");
+            ART[ID.PLANK_HORI] = HelperMethods.LoadImage("/planks/LightPlankSide.jpg");
+            ART[ID.PLANK_UP_RIGHT] = HelperMethods.LoadImage("/planks/LightPlankUpRight.jpg");
+            ART[ID.PLANK_UP_LEFT] = HelperMethods.LoadImage("/planks/LightPlankUpLeft.jpg");
+            ART[ID.PLANK_DOWN_RIGHT] = HelperMethods.LoadImage("/planks/LightPlankBottomRight.jpg");
+            ART[ID.PLANK_DOWN_LEFT] = HelperMethods.LoadImage("/planks/LightPlankBottomLeft.jpg");
         } //LoadImages
     } //IMG
 } //TileConstants
