@@ -1,43 +1,37 @@
 package utilz;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+
 import java.awt.FontMetrics;
 
 import render.GamePanel;
-import utilz.constants.Constants;
 
 public class HelperMethods {
-    
-    /*
-    public static int CalcPanelWidth() {
-        int screenWidth = GamePanel.SCREEN_WIDTH;
-        if (screenWidth >= 1920) {
-            return 1920;
-        } else if (screenWidth >= 1600) {
-            return 1600;
-        } else if (screenWidth >= 1536) {
-            return 1536;
-        } else if (screenWidth >= 1440) {
-            return 1440;
-        } else {
-            return 1366;
-        } //if
-    } //CalcPanelWidth
 
-    public static int CalcPanelHeight() {
-        int screenHeight = GamePanel.SCREEN_HEIGHT;
-        if (screenHeight >= 1080) {
-            return 1080;
-        } else if (screenHeight >= 900) {
-            return 900;
-        } else if (screenHeight >= 864) {
-            return 864;
-        } else {
-            return 768;
-        } //if
-    } //CalcPanelHeight
-    */
+    public static BufferedImage LoadImage(String filename) {
+        BufferedImage imgToReturn = null;
+        InputStream is = HelperMethods.class.getResourceAsStream("/res/" + filename);
+		
+		try {
+			imgToReturn = ImageIO.read(is);
+		} catch (IOException e) {
+            System.out.println(filename);
+			e.printStackTrace();
+		} finally {
+			try {
+				is.close();
+			} catch (IOException io) {
+				io.printStackTrace();
+			}
+		} //try
 
+        return imgToReturn;
+    }
     
     public static double calcFontSize(int sizeAtMaxScreen) {
         //return ((sizeAtMaxScreen * (GamePanel.SCREEN_WIDTH * GamePanel.SCREEN_HEIGHT)) / (1920 * 1080));

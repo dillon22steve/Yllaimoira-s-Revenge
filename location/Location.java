@@ -1,26 +1,40 @@
 package location;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+
+import tile.Tile;
+import utilz.constants.TileConstants;
+import utilz.constants.TileConstants.ID;
+import utilz.constants.TileConstants.ID.*;
 
 public class Location {
 
     private BufferedImage map;
+    private BufferedImage locImg;
     private int xPosWorldMap, yPosWorldMap;
     private String name;
     private Rectangle bounds;
+    private ArrayList<Tile> tiles;
 
     
-    public Location(String mapFileName, String name, int xPosWorldMap, int yPosWorldMap) {
+    public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap) {
         initMap(mapFileName);
+
+        this.locImg = locImg;
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
+
         initBounds();
+        loadLocation();
     }
 
     private void initBounds() {
@@ -41,6 +55,45 @@ public class Location {
 				io.printStackTrace();
 			}
 		}
+    }
+
+    private void loadLocation() {
+        for (int y = 0; y < locImg.getHeight(); y++) {
+            for (int x = 0; x < locImg.getWidth(); x++) {
+                Color c = new Color(locImg.getRGB(x, y));
+                int red = c.getRed();
+                int blue = c.getBlue();
+                int green = c.getGreen();
+
+                loadTileData(red, x, y);
+                loadCharacters(green, x, y);
+                loadObjects(blue, x, y);
+            } //for
+        } //for
+    } //loadLocation
+
+    private void loadObjects(int blue, int x, int y) {
+        switch(blue) {
+
+        } //switch
+    } //loadObjects
+
+    private void loadCharacters(int green, int x, int y) {
+        switch(green) {
+            
+        } //switch
+    } //loadCharacters
+
+    private void loadTileData(int red, int x, int y) {
+        switch(red) {
+            
+        } //switch
+    } //loadTileData
+
+
+
+    public void draw(Graphics g) {
+        
     }
 
 

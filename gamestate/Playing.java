@@ -3,13 +3,22 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import location.Location;
 import utilz.constants.Constants;
 
 public class Playing implements GameStateInterface {
 
-    public void render(Graphics g) {
-        
+    private Location currLocation;
+
+    public Playing() {
+		
     }
+
+    public void render(Graphics g) {
+        currLocation.draw(g);
+    }
+
+
 
     @Override
     public void update() {
@@ -58,6 +67,11 @@ public class Playing implements GameStateInterface {
     }
 
     public void mouseWheelMoved(int wheelRotation) {
+    }
+
+
+    public void setCurrLocation(Location location) {
+        this.currLocation = location;
     }
     
 }

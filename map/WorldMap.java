@@ -29,7 +29,7 @@ public class WorldMap extends map.Map {
         initImg();
 
         //For testing purposes only. Delete this later.
-        selectedLocation = new Location("Atrya.jpg", "Everton", 900, 800);
+        //selectedLocation = new Location("Atrya.jpg", "Everton", 900, 800);
     }
     private void initImg() {
         InputStream is = getClass().getResourceAsStream("/res/Atrya.jpg");
