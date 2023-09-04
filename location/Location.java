@@ -6,14 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-
-import tile.Tile;
-import utilz.constants.TileConstants;
-import utilz.constants.TileConstants.ID;
-import utilz.constants.TileConstants.ID.*;
 
 public class Location {
 
@@ -22,13 +15,14 @@ public class Location {
     private int xPosWorldMap, yPosWorldMap;
     private String name;
     private Rectangle bounds;
-    private ArrayList<Tile> tiles;
+    private int[][] locData;
 
     
     public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap) {
         initMap(mapFileName);
 
         this.locImg = locImg;
+        this.locData = new int[locImg.getWidth()][locImg.getHeight()];
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
@@ -85,9 +79,7 @@ public class Location {
     } //loadCharacters
 
     private void loadTileData(int red, int x, int y) {
-        switch(red) {
-            
-        } //switch
+        locData[x][y] = red;
     } //loadTileData
 
 

@@ -6,15 +6,15 @@ import java.awt.image.BufferedImage;
 public class TileConstants {
     
     public class ID {
-        public static int GRASS = 0;
-        public static int WATER = 1;
-        public static int COBBLESTONE = 2;
-        public static int PLANK_VERT = 3;
-        public static int PLANK_HORI = 4;
-        public static int PLANK_UP_RIGHT = 5;
-        public static int PLANK_UP_LEFT = 6;
-        public static int PLANK_DOWN_RIGHT = 7;
-        public static int PLANK_DOWN_LEFT = 8;
+        public static final int GRASS = 0;
+        public static final int WATER = 1;
+        public static final int COBBLESTONE = 2;
+        public static final int PLANK_VERT = 3;
+        public static final int PLANK_HORI = 4;
+        public static final int PLANK_UP_RIGHT = 5;
+        public static final int PLANK_UP_LEFT = 6;
+        public static final int PLANK_DOWN_RIGHT = 7;
+        public static final int PLANK_DOWN_LEFT = 8;
     } //ID
 
     public class IMG {
