@@ -27,7 +27,9 @@ public class HelperMethods {
 				is.close();
 			} catch (IOException io) {
 				io.printStackTrace();
-			}
+			} catch (NullPointerException n) {
+                System.out.println(filename);
+            }
 		} //try
 
         return imgToReturn;

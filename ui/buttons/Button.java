@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 import utilz.HelperMethods;
 
 public class Button {
-    int width, height, xPos, yPos;
-    String txt;
+    protected int width, height, xPos, yPos;
+    protected String txt;
     private Rectangle bounds;
 
     public Button(String txt, int width, int height, int xPos, int yPos) {

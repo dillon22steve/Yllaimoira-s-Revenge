@@ -24,7 +24,7 @@ public class TileConstants {
         public static BufferedImage[] ART = new BufferedImage[12];
 
         public static void LoadImages() {
-            ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");;
+            ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");
             ART[ID.WATER] = HelperMethods.LoadImage("WaterBlock.jpg");
             ART[ID.COBBLESTONE] = HelperMethods.LoadImage("CobblestoneBlock.jpg");
             ART[ID.PLANK_VERT] = HelperMethods.LoadImage("/planks/LightPlank.jpg");
