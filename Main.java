@@ -5,7 +5,7 @@ import utilz.constants.TileConstants;
 public class Main {
     public static void main(String[] args) {
         HelperMethods.runNow(() -> {
-            TileConstants.IMG.LoadImages();
+            HelperMethods.LoadGame();
         });
         Game game = new Game();
         game.getGamePanel().initInputs();

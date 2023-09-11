@@ -8,6 +8,7 @@ import gamestate.GameStates;
 import ui.buttons.*;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
+import utilz.constants.LocationConstants;
 import render.GamePanel;
 
 public class MainMenuBar extends ButtonBar {
@@ -96,6 +97,8 @@ public class MainMenuBar extends ButtonBar {
                 break;
             case Constants.KeyboardConstants.ENTER:
                 if (selectedBtn == NEWGAMEID) {
+                    LocationConstants.InitLocations();
+
                     GameStates.GameState = GameStates.CHARACTER_CREATION;
                 } else if (selectedBtn == CONTINUEID) {
                     //need to implement a method that loads the last save.
@@ -119,6 +122,7 @@ public class MainMenuBar extends ButtonBar {
         } else if (loadBtn.getBounds().contains(x, y)) {
 
         } else if (newGameBtn.getBounds().contains(x, y)) {
+            LocationConstants.InitLocations();
             GameStates.GameState = GameStates.CHARACTER_CREATION;
         } else if (quitBtn.getBounds().contains(x, y)) {
             System.exit(0);

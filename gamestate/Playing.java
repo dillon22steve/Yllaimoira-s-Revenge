@@ -6,13 +6,14 @@ import java.awt.event.KeyEvent;
 import location.Location;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
+import utilz.constants.LocationConstants;
 
 public class Playing implements GameStateInterface {
 
     private Location currLocation;
 
     public Playing() {
-		//currLocation = new Location("Atrya.jpg", HelperMethods.LoadImage("TestLevel2.png"), "Test", 0, 0);
+		//currLocation = LocationConstants.everton;
     }
 
     public void render(Graphics g) {

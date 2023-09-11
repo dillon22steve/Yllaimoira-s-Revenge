@@ -15,6 +15,7 @@ import java.io.InputStream;
 import location.Location;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
+import utilz.constants.LocationConstants;
 
 public class WorldMap extends map.Map {
 
@@ -25,6 +26,7 @@ public class WorldMap extends map.Map {
     public WorldMap() {
         super();
         initImg();
+        this.locations = new ArrayList<Location>();
 
         //For testing purposes only. Delete this later.
         //selectedLocation = new Location("Atrya.jpg", "Everton", 900, 800);
@@ -133,5 +135,9 @@ public class WorldMap extends map.Map {
                 selectedLocationId = i;
             }
         }
+    }
+
+    public void addLocation(Location location) {
+        this.locations.add(locations.size(), location);
     }
 }

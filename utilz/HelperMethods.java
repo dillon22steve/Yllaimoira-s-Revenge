@@ -10,8 +10,14 @@ import javax.imageio.ImageIO;
 import java.awt.FontMetrics;
 
 import render.GamePanel;
+import utilz.constants.LocationConstants;
+import utilz.constants.TileConstants;
 
 public class HelperMethods {
+
+    public static void LoadGame() {
+        TileConstants.IMG.LoadImages();
+    }
 
     public static BufferedImage LoadImage(String filename) {
         BufferedImage imgToReturn = null;
