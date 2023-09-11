@@ -2,6 +2,7 @@ package ui.bars.character_menu;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import gamestate.GameStates;
 import ui.bars.ButtonBar;
@@ -11,6 +12,9 @@ import utilz.constants.Constants;
 
 public class CharacterMenuSelectionBar extends ButtonBar {
 
+    private BufferedImage scroll;
+    private int scrollWidth, scrollHeight, scrollX, scrollY;
+
     private CharMenuBtn lvlUpBtn, invBtn, questJourBtn, backBtn;
     private CharMenuBtn[] btns;
     private int selectionID = 0;
@@ -18,18 +22,21 @@ public class CharacterMenuSelectionBar extends ButtonBar {
     public CharacterMenuSelectionBar(int width, int height, int xPos, int yPos) {
         super(width, height, xPos, yPos);
         initBtns();
+        initScroll();
     } //constructor
 
 
     private void initBtns() {
-        int lvlUpX = (this.width/2 - (HelperMethods.calcX(75) / 2));
-        lvlUpBtn = new CharMenuBtn("Level Up", 75, 40, lvlUpX, 100, (char)(0));
+        int buttonWidth = HelperMethods.calcX(75);
+        int buttonHeight = HelperMethods.calcY(40);
+        int buttonX = (this.width/2 - (buttonWidth / 2));
+        int buttonY = HelperMethods.calcY(290);
+        int yOffset = HelperMethods.calcY(100);
 
-        int midBtnY = (this.height/2 - (HelperMethods.calcY(40) / 2));
-        invBtn = new CharMenuBtn("Inventory", 75, 40, 200, midBtnY, (char)(1));
-        questJourBtn = new CharMenuBtn("Quests", 75, 40, (this.width - 200), midBtnY, (char)(2));
-
-        backBtn = new CharMenuBtn("Back", 75, 40, lvlUpX, this.height - 100, (char)(3));
+        lvlUpBtn = new CharMenuBtn("Level Up", buttonWidth, buttonHeight, buttonX, buttonY);
+        invBtn = new CharMenuBtn("Inventory", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset));
+        questJourBtn = new CharMenuBtn("Quests", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset*2));
+        backBtn = new CharMenuBtn("Back", buttonWidth, buttonHeight, buttonX, (buttonY + yOffset*3));
 
         btns = new CharMenuBtn[4];
         btns[0] = lvlUpBtn;
@@ -39,7 +46,17 @@ public class CharacterMenuSelectionBar extends ButtonBar {
     } //initBtns
 
 
+    private void initScroll() {
+        scroll = HelperMethods.LoadImage("Scroll.png");
+        scrollWidth = HelperMethods.calcX(1280);
+        scrollHeight = HelperMethods.calcY(720);
+        scrollX = ((this.width / 2) - (scrollWidth / 2));
+        scrollY = HelperMethods.calcY(160);
+    }
+
+
     public void draw(Graphics g) {
+        g.drawImage(scroll, scrollX, scrollY, scrollWidth, scrollHeight, null);
         for (int i = 0; i < btns.length; i++) btns[i].draw(g);
     } //draw
 
@@ -47,28 +64,10 @@ public class CharacterMenuSelectionBar extends ButtonBar {
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()) {
             case Constants.KeyboardConstants.UP:
-                //Setting the selected button to the level up button
-                btns[selectionID].setSelected(false);
-                selectionID = 0;
-                btns[selectionID].setSelected(true);
+                updateSelection(false);
                 break;
             case Constants.KeyboardConstants.DOWN:
-                //Setting the selected button to the back button
-                btns[selectionID].setSelected(false);
-                selectionID = 3;
-                btns[selectionID].setSelected(true);
-                break;
-            case Constants.KeyboardConstants.RIGHT:
-                //Setting the selected button to the quest journal button
-                btns[selectionID].setSelected(false);
-                selectionID = 2;
-                btns[selectionID].setSelected(true);
-                break;
-            case Constants.KeyboardConstants.LEFT:
-                //Setting the selected button to the inventory button
-                btns[selectionID].setSelected(false);
-                selectionID = 1;
-                btns[selectionID].setSelected(true);
+                updateSelection(true);
                 break;
             case Constants.KeyboardConstants.ENTER:
                 if (selectionID == 0) {
@@ -88,17 +87,23 @@ public class CharacterMenuSelectionBar extends ButtonBar {
     } //keyPressed
 
     public void mouseClicked(int x, int y) {
-        for (int i = 0; i < btns.length; i++) {
-            if (btns[i].getBounds().contains(x, y)) {
-                //change states depending on which button is clicked
-            } //if
-        } //for
+        switch(selectionID) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                GameStates.GameState = GameStates.PLAYING;
+                break;
+        }
     } //mouseClicked
 
     public void mouseMoved(int x, int y) {
-        btns[selectionID].setSelected(false);
         for (int i = 0; i < btns.length; i++) {
             if (btns[i].getBounds().contains(x, y)) {
+                btns[selectionID].setSelected(false);
                 selectionID = i;
                 btns[selectionID].setSelected(true);
             } //if
@@ -107,23 +112,32 @@ public class CharacterMenuSelectionBar extends ButtonBar {
 
 
     public void mouseWheelMoved(int wheelRotation) {
+        if (wheelRotation < 0) {
+            updateSelection(false);
+        } else {
+            updateSelection(true);
+        } //if
+    } //mouseWheelMoved
+
+
+    private void updateSelection(boolean down) {
         btns[selectionID].setSelected(false);
 
-        if (wheelRotation < 0) {
+        if (down) {
             if (selectionID < btns.length - 1) {
-                    selectionID++;
+                selectionID++;
             } else {
-                    selectionID = 0;
-            } //if
+                selectionID = 0;
+            }
         } else {
             if (selectionID > 0) {
-                    selectionID--;
+                selectionID--;
             } else {
-                    selectionID = (btns.length - 1);
+                selectionID = (btns.length - 1);
             } //if
         } //if
 
         btns[selectionID].setSelected(true);
-    } //mouseWheelMoved
+    } //updateSelection
 
 }

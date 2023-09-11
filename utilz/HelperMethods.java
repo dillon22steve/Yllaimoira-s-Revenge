@@ -34,6 +34,14 @@ public class HelperMethods {
 
         return imgToReturn;
     } //LoadImage
+
+
+
+    public static void runNow(Runnable target) {
+        Thread thread = new Thread(target);
+        thread.setDaemon(true);
+        thread.start();
+    } //runNow
     
 
     
