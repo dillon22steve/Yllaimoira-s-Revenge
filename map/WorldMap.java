@@ -9,14 +9,12 @@ import gamestate.GameStates;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
 import location.Location;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
-import gamestate.Map;
 
 public class WorldMap extends map.Map {
 
@@ -60,6 +58,7 @@ public class WorldMap extends map.Map {
         g.setColor(Color.WHITE);
         stringX = HelperMethods.calcHorizCenter(g, mapWidth, "<Press L for the World map>");
         g.drawString("<Press L for the local map>", stringX, stringY);
+        g.drawRect(HelperMethods.calcX(1260), HelperMethods.calcY(170), 75, 75);
     }
 
     private void drawSelection(Graphics g) {

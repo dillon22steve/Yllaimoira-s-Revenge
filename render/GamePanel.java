@@ -51,6 +51,7 @@ public class GamePanel extends JPanel {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SCREEN_WIDTH = (int)screenSize.getWidth();
         SCREEN_HEIGHT = (int)screenSize.getHeight();
+        System.out.println(SCREEN_WIDTH + " by " + SCREEN_HEIGHT);
         // SCREEN_WIDTH = 1400;
         // SCREEN_HEIGHT = 900;
         screenSize = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);

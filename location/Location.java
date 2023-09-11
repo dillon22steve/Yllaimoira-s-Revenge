@@ -19,14 +19,16 @@ public class Location {
     private int[][] locData;
 
     
-    public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap) {
+    public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
+        int width, int height) {
+
         this.map = HelperMethods.LoadImage(mapFileName);
         this.locImg = locImg;
         this.locData = new int[locImg.getHeight()][locImg.getWidth()];
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
-        this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, 50, 50);
+        this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, width, height);
 
         loadLocation();
     }
