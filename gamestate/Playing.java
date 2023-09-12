@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import location.Location;
-import utilz.HelperMethods;
 import utilz.constants.Constants;
 import utilz.constants.LocationConstants;
 
@@ -13,12 +12,12 @@ public class Playing implements GameStateInterface {
     private Location currLocation;
 
     public Playing() {
-		//currLocation = LocationConstants.everton;
-    }
+		currLocation = LocationConstants.everton;
+    } //constructor
 
     public void render(Graphics g) {
         currLocation.draw(g);
-    }
+    } //render
 
 
 
@@ -26,7 +25,7 @@ public class Playing implements GameStateInterface {
     public void update() {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
+    } //update
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -53,27 +52,27 @@ public class Playing implements GameStateInterface {
             case Constants.KeyboardConstants.ESC:
                 GameStates.GameState = GameStates.PAUSE_MENU;
                 break;
-        }
-    }
+        } //switch
+    } //keyPressed
 
     @Override
     public void mouseClicked(int x, int y) {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-    }
+    } //mouseClicked
 
     @Override
     public void mouseMoved(int x, int y) {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
-    }
+    } //mouseMoved
 
     public void mouseWheelMoved(int wheelRotation) {
-    }
+    } //mouseWheelMoved
 
 
     public void setCurrLocation(Location location) {
         this.currLocation = location;
-    }
+    } //setCurrLocation
     
 }

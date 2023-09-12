@@ -34,7 +34,7 @@ public class Game implements Runnable {
         this.gamePanel = new GamePanel(this);
         this.gameFrame = new GameFrame(gamePanel);
         this.render = new Render(this);
-        this.mainMenu = new MainMenu();
+        this.mainMenu = new MainMenu(this);
         this.characterCreation = new CharacterCreation();
         this.pauseMenu = new PauseMenu();
         this.playing = new Playing();

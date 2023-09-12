@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import gamestate.GameStates;
+import gamestate.MainMenu;
 import ui.buttons.*;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
@@ -21,10 +22,11 @@ public class MainMenuBar extends ButtonBar {
     MainMenuBtn continueBtn, loadBtn, quitBtn, newGameBtn;
     boolean mouseOver = false;
 
-    public MainMenuBar() {
-        //super(300, 700, (int)(game.getGamePanel().getWidth() / 2 - 150), 300);
-        //super(GamePanel.GAMEPANEL_WIDTH, GamePanel.GAMEPANEL_HEIGHT, 0, 0);
+    private MainMenu mainMenu;
+
+    public MainMenuBar(MainMenu mainMenu) {
         super(GamePanel.SCREEN_WIDTH, GamePanel.SCREEN_HEIGHT, 0, 0);
+        this.mainMenu = mainMenu;
         initBtns();
     }
 
@@ -122,7 +124,7 @@ public class MainMenuBar extends ButtonBar {
         } else if (loadBtn.getBounds().contains(x, y)) {
 
         } else if (newGameBtn.getBounds().contains(x, y)) {
-            LocationConstants.InitLocations();
+            mainMenu.getGame().getPlaying().setCurrLocation(LocationConstants.everton);
             GameStates.GameState = GameStates.CHARACTER_CREATION;
         } else if (quitBtn.getBounds().contains(x, y)) {
             System.exit(0);

@@ -16,7 +16,8 @@ import utilz.constants.TileConstants;
 public class HelperMethods {
 
     public static void LoadGame() {
-        TileConstants.IMG.LoadImages();
+        runNow(() -> TileConstants.IMG.LoadImages());
+        runNow(() -> LocationConstants.InitLocations());
     }
 
     public static BufferedImage LoadImage(String filename) {

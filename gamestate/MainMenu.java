@@ -12,9 +12,11 @@ import utilz.constants.Constants;
 
 public class MainMenu implements GameStateInterface {
     private MainMenuBar mainMenuBar;
+    private Game game;
 
-    public MainMenu() {
-        this.mainMenuBar = new MainMenuBar();
+    public MainMenu(Game game) {
+        this.mainMenuBar = new MainMenuBar(this);
+        this.game = game;
     }
 
     public void render(Graphics g) {
@@ -58,5 +60,10 @@ public class MainMenu implements GameStateInterface {
     public void mouseWheelMoved(int wheelRotation) {
         this.mainMenuBar.mouseWheelMoved(wheelRotation);
     }
+
+
+    public Game getGame() {
+        return this.game;
+    } //getGame
     
 }
