@@ -75,7 +75,7 @@ public class Location {
                 int x = GamePanel.TILE_SIZE * i;
                 int y = GamePanel.TILE_SIZE * j;
 
-                if (artIndex < 12) {
+                if (artIndex < TileConstants.IMG.ART.length) {
                     g.drawImage(TileConstants.IMG.ART[artIndex], x, y, GamePanel.TILE_SIZE, GamePanel.TILE_SIZE, null);
                 } else {
                     //System.out.println(artIndex + "at x: " + i + " and y: " + j);

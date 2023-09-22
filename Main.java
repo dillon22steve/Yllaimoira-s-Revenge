@@ -7,5 +7,5 @@ public class Main {
         Game game = new Game();
         game.getGamePanel().initInputs();
         game.start();
-    }
-}
+    } //main
+} //Main

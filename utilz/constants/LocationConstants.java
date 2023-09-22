@@ -16,7 +16,7 @@ public class LocationConstants {
 
     
     public static void InitLocations() {
-        everton = new Location("Atrya.jpg", HelperMethods.LoadImage("TestLevel2.png"), "Everton", 
+        everton = new Location("Atrya.jpg", HelperMethods.LoadImage("TestCity.png"), "Everton", 
             HelperMethods.calcX(1490), HelperMethods.calcY(900),
             HelperMethods.calcX(125), HelperMethods.calcY(125));
         myrefall = new Location("Atrya.jpg", HelperMethods.LoadImage("TestLevel2.png"), "Myrefall", 
