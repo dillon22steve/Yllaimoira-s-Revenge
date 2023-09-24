@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import characters.playable.Player;
 import render.GamePanel;
 import utilz.HelperMethods;
 import utilz.constants.TileConstants;
@@ -14,6 +15,23 @@ public class Location {
     private BufferedImage map;
     private BufferedImage locImg;
     private int xPosWorldMap, yPosWorldMap;
+
+    private int playerX, playerY;
+    private boolean left = false;
+    private boolean right = false;
+    private boolean up = false;
+    private boolean down = false;
+
+    private double movementSpeedX = 1.3;
+    private double movementSpeedY = 1.0;
+
+    private int maxWidth, maxHeight;
+    private int xLvlOffset, yLvlOffset;
+    private int leftBorder, rightBorder, btmBorder, topBorder;
+    private int tilesWide, tilesHigh;
+    private int maxTilesOffsetX, maxTilesOffsetY;
+    private int maxOffsetX, maxOffsetY;
+
     private String name;
     private Rectangle bounds;
     private int[][] locData;
@@ -28,6 +46,8 @@ public class Location {
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
+        this.playerX = 0;
+        this.playerY = 0;
         this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, width, height);
 
         loadLocation();
@@ -58,7 +78,10 @@ public class Location {
 
     private void loadCharacters(int green, int x, int y) {
         switch(green) {
-            
+            case 0:
+                playerX = x;
+                playerY = y;
+                break;
         } //switch
     } //loadCharacters
 
@@ -67,8 +90,74 @@ public class Location {
     } //loadTileData
 
 
+    public void update() {
+        if (left && !right) {
+            playerX -= movementSpeedX;
+            if (!canMove()) {
+                playerX += movementSpeedX;
+            } //if
+        } else if (right && !left) {
+            playerX += movementSpeedX;
+            if (!canMove()) {
+                playerX -= movementSpeedX;
+            } //if
+        } else if (down && !up) {
+            playerY += movementSpeedY;
+            if (!canMove()) {
+                playerY -= movementSpeedY;
+            } //if
+        } else if (up && !down) {
+            playerY -= movementSpeedY;
+            if (!canMove()) {
+                playerY += movementSpeedY;
+            } //if
+        } //if
+        checkCloseToBorder();
+    } //update
 
-    public void draw(Graphics g) {
+    private boolean canMove() {
+        if (playerX >= maxWidth || playerX < 0) {
+            return false;
+        } else if (locData[playerY / 64][playerX / 64] != TileConstants.ID.GRASS &&
+            locData[playerY / 64][playerX / 64] != TileConstants.ID.COBBLESTONE) {
+            return false;
+        } else {
+            return true;
+        } //if
+    } //canMove
+
+    private void checkCloseToBorder() {
+        int differenceX = playerX - xLvlOffset;
+        if (differenceX > rightBorder) {
+            xLvlOffset += (differenceX - rightBorder);
+        } else if (differenceX < leftBorder) {
+            xLvlOffset += (differenceX - leftBorder);
+        } //if
+
+        if (xLvlOffset > maxOffsetX) {
+            xLvlOffset = maxOffsetX;
+        } else if (xLvlOffset < 0) {
+            xLvlOffset = 0;
+        } //if
+
+
+        int differenceY = playerY - yLvlOffset;
+        if (differenceY > btmBorder) {
+            yLvlOffset += (differenceY - btmBorder);
+        } else if (differenceY < topBorder) {
+            yLvlOffset += (differenceY - topBorder);
+        } //if
+
+        if (yLvlOffset > maxOffsetY) {
+            yLvlOffset = maxOffsetY;
+        } else if (yLvlOffset < 0) {
+            yLvlOffset = 0;
+        } //if
+    } //checkCloseToBorder
+
+
+
+    public void draw(Graphics g, Player player) {
         for (int j = 0; j < locData.length; j++) {
             for (int i = 0; i < locData[0].length; i++) {
                 int artIndex = locData[j][i];
@@ -76,12 +165,13 @@ public class Location {
                 int y = GamePanel.TILE_SIZE * j;
 
                 if (artIndex < TileConstants.IMG.ART.length) {
-                    g.drawImage(TileConstants.IMG.ART[artIndex], x, y, GamePanel.TILE_SIZE, GamePanel.TILE_SIZE, null);
+                    g.drawImage(TileConstants.IMG.ART[artIndex], (x - xLvlOffset), (y - yLvlOffset), GamePanel.TILE_SIZE, GamePanel.TILE_SIZE, null);
                 } else {
                     //System.out.println(artIndex + "at x: " + i + " and y: " + j);
-                }
+                } //if
             } //for
         } //for
+        g.drawImage(player.getImg(), (playerX - xLvlOffset), (playerY - yLvlOffset), player.getImgSize(), player.getImgSize(), null);
     } //draw
 
 
@@ -89,6 +179,25 @@ public class Location {
         g.drawImage(map, 0, 0, GamePanel.SCREEN_WIDTH, GamePanel.SCREEN_HEIGHT, null);
     } //drawMap
 
+
+
+    public void calcOffsetsAndBorders() {
+        this.tilesWide = locData[0].length;
+        this.tilesHigh = locData.length;
+
+        this.maxWidth = tilesWide * GamePanel.TILE_SIZE;
+        this.maxHeight = tilesHigh * GamePanel.TILE_SIZE;
+
+        this.maxTilesOffsetX = tilesWide - GamePanel.TILES_WIDE;
+        this.maxOffsetX = maxTilesOffsetX * GamePanel.TILE_SIZE;
+        this.maxTilesOffsetY = tilesHigh - GamePanel.TILES_HIGH;
+        this.maxOffsetY = maxTilesOffsetY * GamePanel.TILE_SIZE;
+
+        this.leftBorder = (int)(0.2 * GamePanel.SCREEN_WIDTH);
+        this.rightBorder = (int)(0.8 * GamePanel.SCREEN_WIDTH);
+        this.topBorder = (int)(0.2 * GamePanel.SCREEN_HEIGHT);
+        this.btmBorder = (int)(0.8 * GamePanel.SCREEN_HEIGHT);
+    } //calcMaxWidth
 
 
     public int getX() {
@@ -103,4 +212,16 @@ public class Location {
     public Rectangle getBounds() {
         return this.bounds;
     } //getBounds
+    public void setLeft(boolean isMoving) {
+        this.left = isMoving;
+    } //setLeft
+    public void setRight(boolean isMoving) {
+        this.right = isMoving;
+    } //setRight
+    public void setUp(boolean isMoving) {
+        this.up = isMoving;
+    } //setUp
+    public void setDown(boolean isMoving) {
+        this.down = isMoving;
+    } //setDown
 }

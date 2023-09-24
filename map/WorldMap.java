@@ -124,7 +124,7 @@ public class WorldMap extends map.Map {
                 }
         } //if
 
-        selectedLocation = locations.get(selectedLocationId);
+        //selectedLocation = locations.get(selectedLocationId);
     } //updateSelection
 
     private void checkLocationBounds(int x, int y) {

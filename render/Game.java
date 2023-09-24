@@ -1,6 +1,8 @@
 package render;
 
 import java.lang.Runnable;
+
+import characters.playable.Player;
 import render.*;
 import gamestate.*;
 
@@ -20,6 +22,8 @@ public class Game implements Runnable {
     private QuestJournal questJournal;
     private Dialogue dialogueMenu;
 
+    private Player player;
+
     private Thread gameThread;
 
     private final double FPS_SET = 120;
@@ -37,7 +41,8 @@ public class Game implements Runnable {
         this.mainMenu = new MainMenu(this);
         this.characterCreation = new CharacterCreation();
         this.pauseMenu = new PauseMenu();
-        this.playing = new Playing();
+        this.player = new Player("Steve", 100, 100, 1);
+        this.playing = new Playing(this);
         this.map = new Map();
         this.characterMenu = new CharacterMenu();
         this.combat = new Combat();
@@ -58,6 +63,7 @@ public class Game implements Runnable {
                 mainMenu.update();
                 break;
             case PLAYING:
+                playing.update();
                 break;
             case CHARACTER_CREATION:
                 break;
@@ -148,5 +154,8 @@ public class Game implements Runnable {
     }
     public Dialogue getDialogueMenu() {
         return this.dialogueMenu;
+    }
+    public Player getPlayer() {
+        return this.player;
     }
 }
