@@ -38,10 +38,27 @@ public class TileConstants {
         public static final int NOBLE_HOME_14 = 29;
         public static final int NOBLE_HOME_15 = 30;
         public static final int NOBLE_HOME_16 = 31;
+        public static final int BUSH = 32;
+        public static final int INN_1 = 33;
+        public static final int INN_2 = 34;
+        public static final int INN_3 = 35;
+        public static final int INN_4 = 36;
+        public static final int INN_5 = 37;
+        public static final int INN_6 = 38;
+        public static final int INN_7 = 39;
+        public static final int INN_8 = 40;
+        public static final int INN_9 = 41;
+        public static final int INN_10 = 42;
+        public static final int INN_11 = 43;
+        public static final int INN_12 = 44;
+        public static final int INN_13 = 45;
+        public static final int INN_14 = 46;
+        public static final int INN_15 = 47;
+        public static final int INN_16 = 48;
     } //ID
 
     public class IMG {
-        public static BufferedImage[] ART = new BufferedImage[32];
+        public static BufferedImage[] ART = new BufferedImage[49];
 
         public static void LoadImages() {
             ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");
@@ -76,6 +93,23 @@ public class TileConstants {
             ART[ID.NOBLE_HOME_14] = HelperMethods.LoadImage("/buildings/noble_home/NobleHome14.jpg");
             ART[ID.NOBLE_HOME_15] = HelperMethods.LoadImage("/buildings/noble_home/NobleHome15.jpg");
             ART[ID.NOBLE_HOME_16] = HelperMethods.LoadImage("/buildings/noble_home/NobleHome16.jpg");
+            ART[ID.BUSH] = HelperMethods.LoadImage("Bush.jpg");
+            ART[ID.INN_1] = HelperMethods.LoadImage("/buildings/inn/inn1.jpg");
+            ART[ID.INN_2] = HelperMethods.LoadImage("/buildings/inn/inn2.jpg");
+            ART[ID.INN_3] = HelperMethods.LoadImage("/buildings/inn/inn3.jpg");
+            ART[ID.INN_4] = HelperMethods.LoadImage("/buildings/inn/inn4.jpg");
+            ART[ID.INN_5] = HelperMethods.LoadImage("/buildings/inn/inn5.jpg");
+            ART[ID.INN_6] = HelperMethods.LoadImage("/buildings/inn/inn6.jpg");
+            ART[ID.INN_7] = HelperMethods.LoadImage("/buildings/inn/inn7.jpg");
+            ART[ID.INN_8] = HelperMethods.LoadImage("/buildings/inn/inn8.jpg");
+            ART[ID.INN_9] = HelperMethods.LoadImage("/buildings/inn/inn9.jpg");
+            ART[ID.INN_10] = HelperMethods.LoadImage("/buildings/inn/inn10.jpg");
+            ART[ID.INN_11] = HelperMethods.LoadImage("/buildings/inn/inn11.jpg");
+            ART[ID.INN_12] = HelperMethods.LoadImage("/buildings/inn/inn12.jpg");
+            ART[ID.INN_13] = HelperMethods.LoadImage("/buildings/inn/inn13.jpg");
+            ART[ID.INN_14] = HelperMethods.LoadImage("/buildings/inn/inn14.jpg");
+            ART[ID.INN_15] = HelperMethods.LoadImage("/buildings/inn/inn15.jpg");
+            ART[ID.INN_16] = HelperMethods.LoadImage("/buildings/inn/inn16.jpg");
         } //LoadImages
     } //IMG
 } //TileConstants

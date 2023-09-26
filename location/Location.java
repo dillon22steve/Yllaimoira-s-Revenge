@@ -116,10 +116,11 @@ public class Location {
     } //update
 
     private boolean canMove() {
+        int tile = locData[playerY / 64][playerX / 64];
         if (playerX >= maxWidth || playerX < 0) {
             return false;
-        } else if (locData[playerY / 64][playerX / 64] != TileConstants.ID.GRASS &&
-            locData[playerY / 64][playerX / 64] != TileConstants.ID.COBBLESTONE) {
+        } else if (tile != TileConstants.ID.GRASS && tile != TileConstants.ID.COBBLESTONE &&
+            !(tile <= TileConstants.ID.PLANK_DOWN_LEFT && tile >= TileConstants.ID.PLANK_VERT)) {
             return false;
         } else {
             return true;
