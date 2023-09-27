@@ -46,8 +46,6 @@ public class Location {
         this.name = name;
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
-        this.playerX = 0;
-        this.playerY = 0;
         this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, width, height);
 
         loadLocation();
@@ -61,10 +59,10 @@ public class Location {
                 Color c = new Color(locImg.getRGB(x, y));
                 int red = c.getRed();
                 //int blue = c.getBlue();
-                //int green = c.getGreen();
+                int green = c.getGreen();
 
                 loadTileData(red, x, y);
-                //loadCharacters(green, x, y);
+                loadCharacters(green, x, y);
                 //loadObjects(blue, x, y);
             } //for
         } //for

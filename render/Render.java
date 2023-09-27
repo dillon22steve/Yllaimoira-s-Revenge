@@ -39,6 +39,6 @@ public class Render {
             case DIALOGUE:
                 game.getDialogueMenu().render(g);
                 break;
-        }
-    }
-}
+        } //switch
+    } //render
+} //Render

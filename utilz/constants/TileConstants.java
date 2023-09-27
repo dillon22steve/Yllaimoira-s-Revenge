@@ -55,10 +55,26 @@ public class TileConstants {
         public static final int INN_14 = 46;
         public static final int INN_15 = 47;
         public static final int INN_16 = 48;
+        public static final int TAVERN_1 = 49;
+        public static final int TAVERN_2 = 50;
+        public static final int TAVERN_3 = 51;
+        public static final int TAVERN_4 = 52;
+        public static final int TAVERN_5 = 53;
+        public static final int TAVERN_6 = 54;
+        public static final int TAVERN_7 = 55;
+        public static final int TAVERN_8 = 56;
+        public static final int TAVERN_9 = 57;
+        public static final int TAVERN_10 = 58;
+        public static final int TAVERN_11 = 59;
+        public static final int TAVERN_12 = 60;
+        public static final int TAVERN_13 = 61;
+        public static final int TAVERN_14 = 62;
+        public static final int TAVERN_15 = 63;
+        public static final int TAVERN_16 = 64;
     } //ID
 
     public class IMG {
-        public static BufferedImage[] ART = new BufferedImage[49];
+        public static BufferedImage[] ART = new BufferedImage[65];
 
         public static void LoadImages() {
             ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");
@@ -110,6 +126,22 @@ public class TileConstants {
             ART[ID.INN_14] = HelperMethods.LoadImage("/buildings/inn/inn14.jpg");
             ART[ID.INN_15] = HelperMethods.LoadImage("/buildings/inn/inn15.jpg");
             ART[ID.INN_16] = HelperMethods.LoadImage("/buildings/inn/inn16.jpg");
+            ART[ID.TAVERN_1] = HelperMethods.LoadImage("/buildings/tavern/Tavern1.jpg");
+            ART[ID.TAVERN_2] = HelperMethods.LoadImage("/buildings/tavern/Tavern2.jpg");
+            ART[ID.TAVERN_3] = HelperMethods.LoadImage("/buildings/tavern/Tavern3.jpg");
+            ART[ID.TAVERN_4] = HelperMethods.LoadImage("/buildings/tavern/Tavern4.jpg");
+            ART[ID.TAVERN_5] = HelperMethods.LoadImage("/buildings/tavern/Tavern5.jpg");
+            ART[ID.TAVERN_6] = HelperMethods.LoadImage("/buildings/tavern/Tavern6.jpg");
+            ART[ID.TAVERN_7] = HelperMethods.LoadImage("/buildings/tavern/Tavern7.jpg");
+            ART[ID.TAVERN_8] = HelperMethods.LoadImage("/buildings/tavern/Tavern8.jpg");
+            ART[ID.TAVERN_9] = HelperMethods.LoadImage("/buildings/tavern/Tavern9.jpg");
+            ART[ID.TAVERN_10] = HelperMethods.LoadImage("/buildings/tavern/Tavern10.jpg");
+            ART[ID.TAVERN_11] = HelperMethods.LoadImage("/buildings/tavern/Tavern11.jpg");
+            ART[ID.TAVERN_12] = HelperMethods.LoadImage("/buildings/tavern/Tavern12.jpg");
+            ART[ID.TAVERN_13] = HelperMethods.LoadImage("/buildings/tavern/Tavern13.jpg");
+            ART[ID.TAVERN_14] = HelperMethods.LoadImage("/buildings/tavern/Tavern14.jpg");
+            ART[ID.TAVERN_15] = HelperMethods.LoadImage("/buildings/tavern/Tavern15.jpg");
+            ART[ID.TAVERN_16] = HelperMethods.LoadImage("/buildings/tavern/Tavern16.jpg");
         } //LoadImages
     } //IMG
 } //TileConstants
