@@ -71,10 +71,26 @@ public class TileConstants {
         public static final int TAVERN_14 = 62;
         public static final int TAVERN_15 = 63;
         public static final int TAVERN_16 = 64;
+        public static final int WEAPON_SHOP_1 = 65;
+        public static final int WEAPON_SHOP_2 = 66;
+        public static final int WEAPON_SHOP_3 = 67;
+        public static final int WEAPON_SHOP_4 = 68;
+        public static final int WEAPON_SHOP_5 = 69;
+        public static final int WEAPON_SHOP_6 = 70;
+        public static final int WEAPON_SHOP_7 = 71;
+        public static final int WEAPON_SHOP_8 = 72;
+        public static final int WEAPON_SHOP_9 = 73;
+        public static final int WEAPON_SHOP_10 = 74;
+        public static final int WEAPON_SHOP_11 = 75;
+        public static final int WEAPON_SHOP_12 = 76;
+        public static final int WEAPON_SHOP_13 = 77;
+        public static final int WEAPON_SHOP_14 = 78;
+        public static final int WEAPON_SHOP_15 = 79;
+        public static final int WEAPON_SHOP_16 = 80;
     } //ID
 
     public class IMG {
-        public static BufferedImage[] ART = new BufferedImage[65];
+        public static BufferedImage[] ART = new BufferedImage[81];
 
         public static void LoadImages() {
             ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");
@@ -142,6 +158,22 @@ public class TileConstants {
             ART[ID.TAVERN_14] = HelperMethods.LoadImage("/buildings/tavern/Tavern14.jpg");
             ART[ID.TAVERN_15] = HelperMethods.LoadImage("/buildings/tavern/Tavern15.jpg");
             ART[ID.TAVERN_16] = HelperMethods.LoadImage("/buildings/tavern/Tavern16.jpg");
+            ART[ID.WEAPON_SHOP_1] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop1.jpg");
+            ART[ID.WEAPON_SHOP_2] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop2.jpg");
+            ART[ID.WEAPON_SHOP_3] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop3.jpg");
+            ART[ID.WEAPON_SHOP_4] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop4.jpg");
+            ART[ID.WEAPON_SHOP_5] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop5.jpg");
+            ART[ID.WEAPON_SHOP_6] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop6.jpg");
+            ART[ID.WEAPON_SHOP_7] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop7.jpg");
+            ART[ID.WEAPON_SHOP_8] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop8.jpg");
+            ART[ID.WEAPON_SHOP_9] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop9.jpg");
+            ART[ID.WEAPON_SHOP_10] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop10.jpg");
+            ART[ID.WEAPON_SHOP_11] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop11.jpg");
+            ART[ID.WEAPON_SHOP_12] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop12.jpg");
+            ART[ID.WEAPON_SHOP_13] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop13.jpg");
+            ART[ID.WEAPON_SHOP_14] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop14.jpg");
+            ART[ID.WEAPON_SHOP_15] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop15.jpg");
+            ART[ID.WEAPON_SHOP_16] = HelperMethods.LoadImage("/buildings/weapon_shop/WeaponShop16.jpg");
         } //LoadImages
     } //IMG
 } //TileConstants
