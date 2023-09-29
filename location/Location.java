@@ -114,7 +114,7 @@ public class Location {
     } //update
 
     private boolean canMove() {
-        int tile = locData[playerY / 64][playerX / 64];
+        int tile = locData[playerY / GamePanel.TILE_SIZE][playerX / GamePanel.TILE_SIZE];
         if (playerX >= maxWidth || playerX < 0) {
             return false;
         } else if (tile != TileConstants.ID.GRASS && tile != TileConstants.ID.COBBLESTONE &&
