@@ -22,6 +22,7 @@ public class Render {
                 game.getCharacterCreation().render(g);
                 break;
             case CHARACTER_MENU:
+                game.getPlaying().render(g);
                 game.getCharacterMenu().render(g);
                 break;
             case PAUSE_MENU:
