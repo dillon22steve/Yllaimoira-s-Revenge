@@ -55,37 +55,39 @@ public class TileConstants {
         public static final int INN_14 = 46;
         public static final int INN_15 = 47;
         public static final int INN_16 = 48;
-        public static final int TAVERN_1 = 49;
-        public static final int TAVERN_2 = 50;
-        public static final int TAVERN_3 = 51;
-        public static final int TAVERN_4 = 52;
-        public static final int TAVERN_5 = 53;
-        public static final int TAVERN_6 = 54;
-        public static final int TAVERN_7 = 55;
-        public static final int TAVERN_8 = 56;
-        public static final int TAVERN_9 = 57;
-        public static final int TAVERN_10 = 58;
-        public static final int TAVERN_11 = 59;
-        public static final int TAVERN_12 = 60;
-        public static final int TAVERN_13 = 61;
-        public static final int TAVERN_14 = 62;
-        public static final int TAVERN_15 = 63;
-        public static final int WEAPON_SHOP_1 = 64;
-        public static final int WEAPON_SHOP_2 = 65;
-        public static final int WEAPON_SHOP_3 = 66;
-        public static final int WEAPON_SHOP_4 = 67;
-        public static final int WEAPON_SHOP_5 = 68;
-        public static final int WEAPON_SHOP_6 = 69;
-        public static final int WEAPON_SHOP_7 = 70;
-        public static final int WEAPON_SHOP_8 = 71;
-        public static final int WEAPON_SHOP_9 = 72;
-        public static final int WEAPON_SHOP_10 = 73;
-        public static final int WEAPON_SHOP_11 = 74;
-        public static final int WEAPON_SHOP_12 = 75;
+        public static final int INN_17 = 49;
+        public static final int INN_18 = 50;
+        public static final int TAVERN_1 = 51;
+        public static final int TAVERN_2 = 52;
+        public static final int TAVERN_3 = 53;
+        public static final int TAVERN_4 = 54;
+        public static final int TAVERN_5 = 55;
+        public static final int TAVERN_6 = 56;
+        public static final int TAVERN_7 = 57;
+        public static final int TAVERN_8 = 58;
+        public static final int TAVERN_9 = 59;
+        public static final int TAVERN_10 = 60;
+        public static final int TAVERN_11 = 61;
+        public static final int TAVERN_12 = 62;
+        public static final int TAVERN_13 = 63;
+        public static final int TAVERN_14 = 64;
+        public static final int TAVERN_15 = 65;
+        public static final int WEAPON_SHOP_1 = 66;
+        public static final int WEAPON_SHOP_2 = 67;
+        public static final int WEAPON_SHOP_3 = 68;
+        public static final int WEAPON_SHOP_4 = 69;
+        public static final int WEAPON_SHOP_5 = 70;
+        public static final int WEAPON_SHOP_6 = 71;
+        public static final int WEAPON_SHOP_7 = 72;
+        public static final int WEAPON_SHOP_8 = 73;
+        public static final int WEAPON_SHOP_9 = 74;
+        public static final int WEAPON_SHOP_10 = 75;
+        public static final int WEAPON_SHOP_11 = 76;
+        public static final int WEAPON_SHOP_12 = 77;
     } //ID
 
     public class IMG {
-        public static BufferedImage[] ART = new BufferedImage[76];
+        public static BufferedImage[] ART = new BufferedImage[78];
 
         public static void LoadImages() {
             ART[ID.GRASS] = HelperMethods.LoadImage("GrassBlock.jpg");
@@ -137,6 +139,8 @@ public class TileConstants {
             ART[ID.INN_14] = HelperMethods.LoadImage("/buildings/inn/inn14.jpg");
             ART[ID.INN_15] = HelperMethods.LoadImage("/buildings/inn/inn15.jpg");
             ART[ID.INN_16] = HelperMethods.LoadImage("/buildings/inn/inn16.jpg");
+            ART[ID.INN_17] = HelperMethods.LoadImage("/buildings/inn/inn17.jpg");
+            ART[ID.INN_18] = HelperMethods.LoadImage("/buildings/inn/inn18.jpg");
             ART[ID.TAVERN_1] = HelperMethods.LoadImage("/buildings/tavern/Tavern1.jpg");
             ART[ID.TAVERN_2] = HelperMethods.LoadImage("/buildings/tavern/Tavern2.jpg");
             ART[ID.TAVERN_3] = HelperMethods.LoadImage("/buildings/tavern/Tavern3.jpg");
