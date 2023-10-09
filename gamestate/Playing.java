@@ -5,8 +5,11 @@ import java.awt.event.KeyEvent;
 
 import location.Location;
 import render.Game;
+import render.GamePanel;
+import utilz.HelperMethods;
 import utilz.constants.Constants;
 import utilz.constants.LocationConstants;
+import utilz.constants.TileConstants;
 
 public class Playing implements GameStateInterface {
 
@@ -85,8 +88,14 @@ public class Playing implements GameStateInterface {
 
     @Override
     public void mouseClicked(int x, int y) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+        if (currLocation.isInBuilding() == false) {
+            int tile = currLocation.getLocData()[y / GamePanel.TILE_SIZE][x / GamePanel.TILE_SIZE];
+            if (tile >= TileConstants.ID.NOBLE_HOME_1 && tile <= TileConstants.ID.WEAPON_SHOP_12) {
+                this.currLocation = HelperMethods.DetermineBuilding(tile);
+                currLocation.setPlayerX(currLocation.getDoorLocX());
+                currLocation.setPlayerY((currLocation.getImgs().length * GamePanel.TILE_SIZE) - GamePanel.TILE_SIZE);
+            } //if
+        } //if
     } //mouseClicked
 
     @Override

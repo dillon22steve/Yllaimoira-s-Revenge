@@ -12,29 +12,31 @@ import utilz.constants.TileConstants;
 
 public class Location {
 
+    protected boolean isInBuilding;
+
     private BufferedImage map;
-    private BufferedImage locImg;
+    protected BufferedImage locImg;
     private int xPosWorldMap, yPosWorldMap;
 
-    private int playerX, playerY;
-    private boolean left = false;
-    private boolean right = false;
-    private boolean up = false;
-    private boolean down = false;
+    protected int playerX, playerY;
+    protected boolean left = false;
+    protected boolean right = false;
+    protected boolean up = false;
+    protected boolean down = false;
 
-    private double movementSpeedX = 1.3;
-    private double movementSpeedY = 1.0;
+    protected double movementSpeedX = 1.3;
+    protected double movementSpeedY = 1.0;
 
-    private int maxWidth, maxHeight;
-    private int xLvlOffset, yLvlOffset;
-    private int leftBorder, rightBorder, btmBorder, topBorder;
-    private int tilesWide, tilesHigh;
-    private int maxTilesOffsetX, maxTilesOffsetY;
-    private int maxOffsetX, maxOffsetY;
+    protected int maxWidth, maxHeight;
+    protected int xLvlOffset, yLvlOffset;
+    protected int leftBorder, rightBorder, btmBorder, topBorder;
+    protected int tilesWide, tilesHigh;
+    protected int maxTilesOffsetX, maxTilesOffsetY;
+    protected int maxOffsetX, maxOffsetY;
 
     private String name;
     private Rectangle bounds;
-    private int[][] locData;
+    protected int[][] locData;
 
     
     public Location(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
@@ -47,85 +49,49 @@ public class Location {
         this.xPosWorldMap = xPosWorldMap;
         this.yPosWorldMap = yPosWorldMap;
         this.bounds = new Rectangle(xPosWorldMap, yPosWorldMap, width, height);
+    } //Constructor
 
-        loadLocation();
-    }
-
-
-
-    private void loadLocation() {
-        for (int y = 0; y < locImg.getHeight(); y++) {
-            for (int x = 0; x < locImg.getWidth(); x++) {
-                Color c = new Color(locImg.getRGB(x, y));
-                int red = c.getRed();
-                //int blue = c.getBlue();
-                int green = c.getGreen();
-
-                loadTileData(red, x, y);
-                loadCharacters(green, x, y);
-                //loadObjects(blue, x, y);
-            } //for
-        } //for
-    } //loadLocation
-
-    private void loadObjects(int blue, int x, int y) {
-        switch(blue) {
-
-        } //switch
-    } //loadObjects
-
-    private void loadCharacters(int green, int x, int y) {
-        switch(green) {
-            case 0:
-                playerX = x;
-                playerY = y;
-                break;
-        } //switch
-    } //loadCharacters
-
-    private void loadTileData(int red, int x, int y) {
-        locData[y][x] = red;
-    } //loadTileData
 
 
     public void update() {
         if (left && !right) {
-            playerX -= movementSpeedX;
-            if (!canMove()) {
-                playerX += movementSpeedX;
-            } //if
-        } else if (right && !left) {
-            playerX += movementSpeedX;
-            if (!canMove()) {
+            if (canMove((int)(playerX - movementSpeedX), playerY)) {
                 playerX -= movementSpeedX;
             } //if
+        } else if (right && !left) {
+            if (canMove((int)(playerX + movementSpeedX), playerY)) {
+                playerX += movementSpeedX;
+            } //if
         } else if (down && !up) {
-            playerY += movementSpeedY;
-            if (!canMove()) {
-                playerY -= movementSpeedY;
+            if (canMove(playerX, (int)(playerY + movementSpeedY))) {
+                playerY += movementSpeedY;
             } //if
         } else if (up && !down) {
-            playerY -= movementSpeedY;
-            if (!canMove()) {
-                playerY += movementSpeedY;
+            if (canMove(playerX, (int)(playerY - movementSpeedY))) {
+                playerY -= movementSpeedY;
             } //if
         } //if
         checkCloseToBorder();
     } //update
 
-    private boolean canMove() {
-        int tile = locData[playerY / GamePanel.TILE_SIZE][playerX / GamePanel.TILE_SIZE];
-        if (playerX >= maxWidth || playerX < 0) {
-            return false;
-        } else if (tile != TileConstants.ID.GRASS && tile != TileConstants.ID.COBBLESTONE &&
-            !(tile <= TileConstants.ID.PLANK_DOWN_LEFT && tile >= TileConstants.ID.PLANK_VERT)) {
+    protected boolean canMove(int x, int y) {
+        if (x >= maxWidth || x < 0 || y >= maxHeight || y < 0) {
             return false;
         } else {
-            return true;
+            int tile = locData[y / GamePanel.TILE_SIZE][x / GamePanel.TILE_SIZE];
+
+            //If the tile the player is trying to move to is not grass, cobblestone, or a plank,
+            //it returns false. Otherwise, it returns true.
+            if (tile != TileConstants.ID.GRASS && tile != TileConstants.ID.COBBLESTONE &&
+                !(tile <= TileConstants.ID.PLANK_DOWN_LEFT && tile >= TileConstants.ID.PLANK_VERT)) {
+                return false;
+            } else {
+                return true;
+            } //if
         } //if
     } //canMove
 
-    private void checkCloseToBorder() {
+    protected void checkCloseToBorder() {
         int differenceX = playerX - xLvlOffset;
         if (differenceX > rightBorder) {
             xLvlOffset += (differenceX - rightBorder);
@@ -199,6 +165,8 @@ public class Location {
     } //calcMaxWidth
 
 
+
+
     public int getX() {
         return this.xPosWorldMap;
     } //getX
@@ -223,4 +191,32 @@ public class Location {
     public void setDown(boolean isMoving) {
         this.down = isMoving;
     } //setDown
-}
+    public int[][] getLocData() {
+        return locData;
+    } //getLocData
+    public boolean isInBuilding() {
+        return this.isInBuilding;
+    } //isInBuilding
+    public void setIsInBuilding(boolean isInBuilding) {
+        this.isInBuilding = isInBuilding;
+    } //setIsInBuilding
+    public int getDoorLocX() {
+        return 0;
+    } //getDoorLocX
+    public BufferedImage[][] getImgs() {
+        return null;
+    } //getImgs
+    public void setPlayerX(int playerX) {
+        this.playerX = playerX;
+    } //setPlayerX
+    public void setPlayerY(int playerY) {
+        this.playerY = playerY;
+    } //setPlayerY
+    public int getPlayerY() {
+        return this.playerY;
+    } //getPlayerY
+    public void setYLvlOffset(int yLvlOffset) {
+        this.yLvlOffset = yLvlOffset;
+    } //setYLvlOffset
+    
+} //Location

@@ -7,9 +7,12 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import location.Building;
+
 import java.awt.FontMetrics;
 
 import render.GamePanel;
+import utilz.constants.BuildingConstants;
 import utilz.constants.LocationConstants;
 import utilz.constants.TileConstants;
 
@@ -18,7 +21,7 @@ public class HelperMethods {
     public static void LoadGame() {
         runNow(() -> TileConstants.IMG.LoadImages());
         runNow(() -> LocationConstants.InitLocations());
-    }
+    } //LoadGame
 
     public static BufferedImage LoadImage(String filename) {
         BufferedImage imgToReturn = null;
@@ -90,5 +93,22 @@ public class HelperMethods {
     public static int CalcTilesHigh(int screenHeight, int tileSize) {
         return (int)(Math.ceil((double)(screenHeight / tileSize)));
     } //CalcTilesWide
+
+
+
+
+    public static Building DetermineBuilding(int tile) {
+        if (tile >= TileConstants.ID.NOBLE_HOME_1 && tile <= TileConstants.ID.NOBLE_HOME_16) {
+            return null;
+        } else if (tile >= TileConstants.ID.INN_1 && tile <= TileConstants.ID.INN_18) {
+            return null;
+        } else if (tile >= TileConstants.ID.TAVERN_1 && tile <= TileConstants.ID.TAVERN_15) {
+            return BuildingConstants.tavern;
+        } else if (tile >= TileConstants.ID.WEAPON_SHOP_1 && tile <= TileConstants.ID.WEAPON_SHOP_12) {
+            return null;
+        } else {
+            return null;
+        }
+    } //DetermineBuilding
     
-}
+} //HelperMethods
