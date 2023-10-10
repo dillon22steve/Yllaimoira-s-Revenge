@@ -11,7 +11,7 @@ public class BuildingConstants {
         tavern = new Building("Atrya.jpg", HelperMethods.LoadImage("/buildings/tavern/TavernInterior.jpg"), "Everton Tavern", 
             HelperMethods.calcX(1490), HelperMethods.calcY(900), 
             HelperMethods.calcX(125), HelperMethods.calcY(125),
-            LocationConstants.everton, 7);
+            LocationConstants.everton, 9);
     } //InitBuildings
 
 } //BuildingConstants

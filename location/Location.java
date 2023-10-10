@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import characters.playable.Player;
+import gamestate.Playing;
 import render.GamePanel;
 import utilz.HelperMethods;
 import utilz.constants.TileConstants;
@@ -53,17 +54,18 @@ public class Location {
 
 
 
-    public void update() {
+    public void update(Playing playing) {
+        int playerSize = playing.getGame().getPlayer().getImgSize();
         if (left && !right) {
             if (canMove((int)(playerX - movementSpeedX), playerY)) {
                 playerX -= movementSpeedX;
             } //if
         } else if (right && !left) {
-            if (canMove((int)(playerX + movementSpeedX), playerY)) {
+            if (canMove((int)(playerX + playerSize + movementSpeedX), playerY)) {
                 playerX += movementSpeedX;
             } //if
         } else if (down && !up) {
-            if (canMove(playerX, (int)(playerY + movementSpeedY))) {
+            if (canMove(playerX, (int)(playerY + playerSize + movementSpeedY))) {
                 playerY += movementSpeedY;
             } //if
         } else if (up && !down) {

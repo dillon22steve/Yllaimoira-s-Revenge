@@ -30,7 +30,7 @@ public class Playing implements GameStateInterface {
 
     @Override
     public void update() {
-        currLocation.update();
+        currLocation.update(this);
     } //update
 
     @Override
@@ -83,7 +83,7 @@ public class Playing implements GameStateInterface {
             case 'W':
                 currLocation.setUp(false);
                 break;
-        }
+        } //switch
     } //keyReleased
 
     @Override
@@ -93,7 +93,7 @@ public class Playing implements GameStateInterface {
             if (tile >= TileConstants.ID.NOBLE_HOME_1 && tile <= TileConstants.ID.WEAPON_SHOP_12) {
                 this.currLocation = HelperMethods.DetermineBuilding(tile);
                 currLocation.setPlayerX(currLocation.getDoorLocX());
-                currLocation.setPlayerY((currLocation.getImgs().length * GamePanel.TILE_SIZE) - GamePanel.TILE_SIZE);
+                currLocation.setPlayerY((currLocation.getImgs().length * GamePanel.TILE_SIZE) - (GamePanel.TILE_SIZE * 2));
             } //if
         } //if
     } //mouseClicked
@@ -108,8 +108,12 @@ public class Playing implements GameStateInterface {
     } //mouseWheelMoved
 
 
+
     public void setCurrLocation(Location location) {
         this.currLocation = location;
     } //setCurrLocation
-    
-}
+    public Game getGame() {
+        return this.game;
+    } //getGame
+
+} //Playing

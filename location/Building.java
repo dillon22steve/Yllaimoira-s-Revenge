@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import characters.playable.Player;
+import gamestate.Playing;
 import render.GamePanel;
 import utilz.constants.TileConstants;
 
@@ -12,6 +13,7 @@ public class Building extends Location {
     private BufferedImage[][] imgs;
     private Location cityIn;
     private int doorLocX;
+    private int doorLocY;
 
     public Building(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
             int width, int height, Location cityIn, int doorLoc) {
@@ -21,6 +23,7 @@ public class Building extends Location {
         this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
         this.isInBuilding = true;
         this.loadImgArr();
+        this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
         this.calcOffsetsAndBorders();
     } //Building
 
@@ -54,7 +57,7 @@ public class Building extends Location {
 
 
     @Override
-    public void update() {
+    public void update(Playing playing) {
         if (left && !right) {
             if (canMove((int)(playerX - movementSpeedX), playerY)) {
                 playerX -= movementSpeedX;
@@ -72,14 +75,13 @@ public class Building extends Location {
                 playerY -= movementSpeedY;
             } //if
         } //if
-        //checkCloseToBorder();
+        checkCloseToBorder();
 
-        int xToCheck = doorLocX * GamePanel.TILE_SIZE;
-        int yToCheck = (imgs.length - 1) * GamePanel.TILE_SIZE;
-        if (playerX >= xToCheck && playerX <= xToCheck + GamePanel.TILE_SIZE && 
-            playerY >= yToCheck && playerY <= yToCheck + GamePanel.TILE_SIZE) {
+        if (playerX >= doorLocX && (playerX <= doorLocX + GamePanel.TILE_SIZE) && 
+            playerY >= doorLocY && (playerY <= doorLocY + GamePanel.TILE_SIZE)) {
                 //This is going to change the location back to the city if the user enters the tile
                 //that holds the door to the building.
+                playing.setCurrLocation(cityIn);
         } //if
     } //update
 
@@ -101,9 +103,21 @@ public class Building extends Location {
         this.maxWidth = tilesWide * GamePanel.TILE_SIZE;
         this.maxHeight = tilesHigh * GamePanel.TILE_SIZE;
 
-        this.maxTilesOffsetX = tilesWide - GamePanel.TILES_WIDE;
+        //If the number of tiles in the building surpasses the number of tiles on the screen,
+        //Then the maxTilesOffset will be set to the number of tiles in the building minus
+        //the number of tiles on the screen. Else, the max offset will be the number of tiles
+        //in the building.
+        if (tilesWide > GamePanel.TILES_WIDE) {
+            this.maxTilesOffsetX = tilesWide - GamePanel.TILES_WIDE;
+        } else {
+            this.maxTilesOffsetX = tilesWide;
+        } //if
+        if (tilesHigh > GamePanel.TILES_HIGH) {
+             this.maxTilesOffsetY = tilesHigh - GamePanel.TILES_HIGH;
+        } else {
+             this.maxTilesOffsetY = tilesHigh;
+        } //if
         this.maxOffsetX = maxTilesOffsetX * GamePanel.TILE_SIZE;
-        this.maxTilesOffsetY = tilesHigh - GamePanel.TILES_HIGH;
         this.maxOffsetY = maxTilesOffsetY * GamePanel.TILE_SIZE;
 
         this.leftBorder = (int)(0.2 * GamePanel.SCREEN_WIDTH);
