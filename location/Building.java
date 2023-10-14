@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import characters.playable.Player;
 import gamestate.Playing;
 import render.GamePanel;
-import utilz.constants.TileConstants;
 
 public class Building extends Location {
 
