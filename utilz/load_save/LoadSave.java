@@ -2,39 +2,28 @@ package utilz.load_save;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class LoadSave {
     
-    public static void createFile(int saveNum) {
-		File txtFile = new File(("res/Save" + saveNum));
-		
+    public static int[][] LoadBuildingCanMove(String bldgName, int height, int width) {
+		int[][] canMoveData = new int[height][width];
+		String pathToRes = "C:\\Users\\dillo\\OneDrive\\Documents\\GitHub\\Yllaimoira-s-Revenge";
+		File file = new File(pathToRes + "/res/can-move-files/" + bldgName + "-can-move.txt");
 		try {
-			txtFile.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	} //createFile
+			Scanner fileScanner = new Scanner(file);
+			int i, j;
+			while (fileScanner.hasNextInt()) {
+				j = fileScanner.nextInt();
+				i = fileScanner.nextInt();
+				canMoveData[i][j] = 1;
+			} //while
+			fileScanner.close();
+		} catch (IOException io) {
+			System.out.println(io.getMessage());
+		} //catch
 
-
-    public static void writeToFile(File f) {
-        try {
-            PrintWriter pw = new PrintWriter(f);
-            pw.close();
-        } catch (IOException e) {
-
-        }
-    } //WriteToFile
-
-
-    public static void getLevelData(String filename) {
-        File levelFile = new File("res/" + filename + ".txt");
-		
-		if(levelFile.exists()) {
-			return;
-		} else {
-			System.out.println("File " + filename +  "does not exist!");
-		}
-    } //GetLevelData
+		return canMoveData;
+	} //LoadBuildingCanMove
     
-}
+} //LoadSave

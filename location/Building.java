@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import characters.playable.Player;
 import gamestate.Playing;
 import render.GamePanel;
+import utilz.load_save.LoadSave;
 
 public class Building extends Location {
 
@@ -15,13 +16,14 @@ public class Building extends Location {
     private int doorLocY;
 
     public Building(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
-            int width, int height, Location cityIn, int doorLoc) {
+            int width, int height, Location cityIn, int doorLoc, String canMoveFileName) {
 
         super(mapFileName, locImg, name, xPosWorldMap, yPosWorldMap, width, height);
         this.cityIn = cityIn;
         this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
         this.isInBuilding = true;
         this.loadImgArr();
+        this.loadLocData(canMoveFileName);
         this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
         this.calcOffsetsAndBorders();
     } //Building
@@ -40,9 +42,17 @@ public class Building extends Location {
     } //LoadImgArr
 
 
+    private void loadLocData(String canMoveFileName) {
+        locData = LoadSave.LoadBuildingCanMove(canMoveFileName, imgs.length, imgs[0].length);
+    } //loadLocData
+
+
     @Override
     public void draw(Graphics g, Player player) {
         int size = GamePanel.TILE_SIZE;
+        int width = locImg.getWidth() / size;
+        int height = locImg.getHeight() / size;
+        
         for (int i = 0; i < imgs.length; i++) {
             for (int j = 0; j < imgs[i].length; j++) {
                 int x = GamePanel.TILE_SIZE * j;
@@ -80,6 +90,7 @@ public class Building extends Location {
             playerY >= doorLocY && (playerY <= doorLocY + GamePanel.TILE_SIZE)) {
                 //This is going to change the location back to the city if the user enters the tile
                 //that holds the door to the building.
+                down = up = left = right = false;
                 playing.setCurrLocation(cityIn);
         } //if
     } //update
@@ -89,7 +100,11 @@ public class Building extends Location {
         if (x >= maxWidth || x < 0 || y >= maxHeight || y < 0) {
             return false;
         } else {
-            return true;
+            if (locData[y / GamePanel.TILE_SIZE][x / GamePanel.TILE_SIZE] != 1) {
+                return true;
+            } else {
+                return false;
+            } //if
         } //if
     } //canMove
 
