@@ -108,7 +108,7 @@ public class HelperMethods {
             return null;
         } else {
             return null;
-        }
+        } //if
     } //DetermineBuilding
     
 } //HelperMethods

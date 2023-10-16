@@ -3,7 +3,6 @@ package render;
 import java.lang.Runnable;
 
 import characters.playable.Player;
-import render.*;
 import gamestate.*;
 
 
@@ -32,7 +31,7 @@ public class Game implements Runnable {
 
     public Game() {
         initClasses();
-    }
+    } //constructor
 
     public void initClasses() {
         this.gamePanel = new GamePanel(this);
@@ -48,13 +47,13 @@ public class Game implements Runnable {
         this.combat = new Combat();
         this.questJournal = new QuestJournal();
         this.dialogueMenu = new Dialogue();
-    }
+    } //initClasses
 
 
     public void start() {
         gameThread = new Thread(this);
         gameThread.start();
-    }
+    } //start
 
 
     public void updateGame() {
@@ -79,8 +78,8 @@ public class Game implements Runnable {
                 break;
             case DIALOGUE:
                 break;
-        }
-    }
+        } //switch
+    } //updateGame
 
 
     @Override
@@ -102,13 +101,13 @@ public class Game implements Runnable {
                 lastFrame = now;
                 gamePanel.repaint();
                 //frames++;
-            }
+            } //if
 
             if((now - lastUpdate) >= timePerUpdate) {
                 lastUpdate = now;
                 updateGame();
                 //updates++;
-            }
+            } //if
 
             /*
             if ( System.currentTimeMillis() - lastTimeCheck >= 1000) {
@@ -118,8 +117,8 @@ public class Game implements Runnable {
                 lastTimeCheck = System.currentTimeMillis();
             }
             */
-        }
-    }
+        } //while
+    } //run
 
 
     public GamePanel getGamePanel() {
@@ -158,4 +157,4 @@ public class Game implements Runnable {
     public Player getPlayer() {
         return this.player;
     }
-}
+} //Game

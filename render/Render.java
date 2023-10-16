@@ -7,7 +7,7 @@ public class Render {
 
     public Render(Game game) {
         this.game = game;
-    }
+    } //constructor
     
     
     public void render(Graphics g) {

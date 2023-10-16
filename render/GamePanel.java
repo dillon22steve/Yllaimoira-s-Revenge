@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
         this.game = game;
         setPanelSize();
         this.setBackground(Color.BLACK);
-    }
+    } //constructor
 
 
     public void initInputs() {
@@ -44,7 +44,7 @@ public class GamePanel extends JPanel {
         addKeyListener(keyBoardInputs);
 
         requestFocus();
-    }
+    } //initInputs
 
 
     private void setPanelSize() {
@@ -62,17 +62,17 @@ public class GamePanel extends JPanel {
         setMinimumSize(screenSize);
         //setMaximumSize(screenSize);
         setPreferredSize(screenSize);
-    }
+    } //setPanelSize
 
 
     public void update() {
 
-    }
+    } //update
 
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         game.getRender().render(g);
-    }
-}
+    } //paintComponent
+} //GamePanel

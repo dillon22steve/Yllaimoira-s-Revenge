@@ -15,5 +15,5 @@ public enum GameStates {
 
     public void setGameState(GameStates GameState) {
         GameStates.GameState = GameState;
-    }
-}
+    } //setGameState
+} //GameStates
