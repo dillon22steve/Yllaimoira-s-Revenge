@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,7 +15,12 @@ import utilz.constants.Constants;
 
 public class Pause {
 
-    Editor editor;
+    private static String homePath = System.getProperty("user.home");
+    public static String saveFolder = "CanMoveEditor";
+    public static String filePath = homePath + File.separator + saveFolder + File.separator;
+    public static String file = filePath + "can-move-editor.txt";
+
+    private Editor editor;
 
     private String[] options;
     private char selectedIndex;
@@ -31,7 +35,16 @@ public class Pause {
         options[0] = "Return";
         options[1] = "Save";
         options[2] = "Choose Location";
+        createFolder();
     } //constructor
+
+    public void createFolder() {
+		File folder = new File(homePath + File.separator + saveFolder);
+		if (!folder.exists()) {
+			folder.mkdir();
+        } //if
+	} //createFolder
+
 
 
     public void update() {
@@ -105,15 +118,14 @@ public class Pause {
 
     public void writeToFile(String bldgName) {
         try {
-            File file = new File("/" + bldgName + ".txt");
-            if (!(file).exists()) {
-                file.createNewFile();
-            } //if
-
             PrintWriter pw = new PrintWriter(file);
             for (int i = 0; i < editor.getEditBuilding().getSelectedTiles().size(); i++) {
-                String stringToAdd = editor.getEditBuilding().getSelectedTiles().get(i).getX() + " ";
-                pw.println(stringToAdd);
+                int x = (int)(editor.getEditBuilding().getSelectedTiles().get(i).getX()) / 64;
+                int y = (int)(editor.getEditBuilding().getSelectedTiles().get(i).getY()) / 64;
+                pw.print(x);
+                pw.print(" ");
+                pw.print(y);
+                pw.print("\n");
             } //for
             pw.close();
             } catch (IOException io) {
