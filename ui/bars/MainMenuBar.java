@@ -28,7 +28,7 @@ public class MainMenuBar extends ButtonBar {
         super(GamePanel.SCREEN_WIDTH, GamePanel.SCREEN_HEIGHT, 0, 0);
         this.mainMenu = mainMenu;
         initBtns();
-    }
+    } //constructor
 
     public void initBtns() {
         int btnXPos = (this.xPos + (this.width / 2 - 50));
@@ -39,30 +39,30 @@ public class MainMenuBar extends ButtonBar {
         this.continueBtn = new MainMenuBtn("Continue", 100, 30, btnXPos, HelperMethods.calcY(430));
         this.loadBtn = new MainMenuBtn("Load", 100, 30, btnXPos, HelperMethods.calcY(530));
         this.quitBtn = new MainMenuBtn("Quit", 100, 30, btnXPos, HelperMethods.calcY(630));
-    }
+    } //initBtns
 
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
         drawBody(g);
         drawBtns(g);
-    }
+    } //draw
 
     public void drawBody(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(xPos, yPos, width, height);
-    }
+    } //drawBody
 
     public void drawBtns(Graphics g) {
         this.newGameBtn.draw(g);
         this.continueBtn.draw(g);
         this.loadBtn.draw(g);
         this.quitBtn.draw(g);
-    }
+    } //drawBtns
 
 
     public void update() {
         MainMenuBtn.updateOpacity();
-    }
+    } //update
 
     public void updateSelectedBtn(KeyEvent e) {
         resetSelection();
@@ -80,7 +80,7 @@ public class MainMenuBar extends ButtonBar {
                 } else if (selectedBtn == QUITID) {
                     selectedBtn = LOADID;
                     loadBtn.setSelected(true);
-                }
+                } //if
                 break;
             case Constants.KeyboardConstants.DOWN:
                 if (selectedBtn == NEWGAMEID) {
@@ -95,7 +95,7 @@ public class MainMenuBar extends ButtonBar {
                 } else if (selectedBtn == QUITID) {
                     selectedBtn = NEWGAMEID;
                     newGameBtn.setSelected(true);
-                }
+                } //if
                 break;
             case Constants.KeyboardConstants.ENTER:
                 if (selectedBtn == NEWGAMEID) {
@@ -111,10 +111,10 @@ public class MainMenuBar extends ButtonBar {
                     System.exit(0);
                     //need to implement a method that asks the user if they're sure they want
                     //to quit the game.
-                }
+                } //if
                 break;
-        }
-    }
+        } //switch
+    } //updateSelection
 
 
 
@@ -128,8 +128,8 @@ public class MainMenuBar extends ButtonBar {
             GameStates.GameState = GameStates.CHARACTER_CREATION;
         } else if (quitBtn.getBounds().contains(x, y)) {
             System.exit(0);
-        }
-    }
+        } //if
+    } //mouseClicked
     public void mouseMoved(int x, int y) {
         resetBooleans();
         if (continueBtn.getBounds().contains(x, y)) {
@@ -148,8 +148,8 @@ public class MainMenuBar extends ButtonBar {
             quitBtn.setMouseOver(true);
             resetSelection();
             quitBtn.setSelected(true);
-        }
-    }
+        } //if
+    } //mouseClicked
     public void mousePressed(int x, int y) {
         resetBooleans();
         if (continueBtn.getBounds().contains(x, y)) {
@@ -160,23 +160,23 @@ public class MainMenuBar extends ButtonBar {
             newGameBtn.setMousePressed(true);
         } else if (quitBtn.getBounds().contains(x, y)) {
             quitBtn.setMousePressed(true);
-        }
-    }
+        } //if
+    } //mousePressed
     public void mouseReleased(int x, int y) {
         resetBooleans();
-    }
+    } //mouseReleased
     public void resetBooleans() {
         continueBtn.resetBooleans();
         loadBtn.resetBooleans();
         newGameBtn.resetBooleans();
         quitBtn.resetBooleans();
-    }
+    } //resetBooleans
     public void resetSelection() {
         newGameBtn.setSelected(false);
         loadBtn.setSelected(false);
         continueBtn.setSelected(false);
         quitBtn.setSelected(false);
-    }
+    } //resetSelection
 
     public void mouseWheelMoved(int wheelRotation) {
         if (wheelRotation > 0) {
@@ -202,7 +202,7 @@ public class MainMenuBar extends ButtonBar {
                     quitBtn.setSelected(false);
                     loadBtn.setSelected(true);
                     break;
-            }
+            } //switch
         } else {
             switch(selectedBtn) {
                 case NEWGAMEID:
@@ -225,7 +225,7 @@ public class MainMenuBar extends ButtonBar {
                     quitBtn.setSelected(false);
                     newGameBtn.setSelected(true);
                     break;
-            }
-        }
-    }
-}
+            } //switch
+        } //if
+    } //mouseWheelMoved
+} //MainMenuBar

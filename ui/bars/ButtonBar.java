@@ -8,5 +8,6 @@ public class ButtonBar {
         this. height = height;
         this.xPos = xPos;
         this.yPos = yPos;
-    }
-}
+    } //constructor
+    
+} //ButtonBar
