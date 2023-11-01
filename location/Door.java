@@ -1,5 +1,6 @@
-import java.awt.Rectangle;
+package location;
 
+import java.awt.Rectangle;
 import render.GamePanel;
 
 public class Door {

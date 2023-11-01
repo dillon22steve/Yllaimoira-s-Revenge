@@ -1,6 +1,12 @@
+package location;
+
 import java.util.ArrayList;
+import characters.playable.enemies.Enemy;
 import gamestate.GameStates;
+import gamestate.Playing;
+
 import java.lang.Math;
+import java.awt.image.BufferedImage;
 
 public class Dungeon extends Enterable {
 

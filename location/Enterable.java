@@ -1,3 +1,7 @@
+package location;
+
+import java.awt.image.BufferedImage;
+import render.GamePanel;
 
 
 public class Enterable extends Location {
@@ -5,14 +9,15 @@ public class Enterable extends Location {
     protected Door mainDoor;
     protected BufferedImage[][] imgs;
     protected Location cityIn;
+    protected int doorLocX, doorLocY;
     
     public Enterable (String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
         int width, int height, Location cityIn, int doorLoc) {
         super(mapFileName, locImg, name, xPosWorldMap, yPosWorldMap, width, height);
         this.isInBuilding = true;
         this.cityIn = cityIn;
-        this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
-        this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
+        //this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
+        //this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
         loadImgArr();
         calcOffsetsAndBorders();
     } //constructor

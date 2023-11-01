@@ -3,7 +3,15 @@ package gamestate;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import characters.playable.enemies.Enemy;
+
 public class Combat implements GameStateInterface {
+
+    private Enemy enemy;
+
+    public Combat() {
+
+    } //constructor
 
     public void render(Graphics g) {
         
@@ -35,5 +43,9 @@ public class Combat implements GameStateInterface {
 
     public void mouseWheelMoved(int wheelRotation) {
     }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    } //setEnemy
     
 }
