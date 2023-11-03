@@ -8,6 +8,7 @@ public class Playable {
     private int gold;
     private int level;
     private Equipment rightHand, leftHand, ring1, ring2, head, torso, legs, feet;
+    private int initiative;
 
 
     public Playable(String name, int health, int gold, int level) {
@@ -15,16 +16,26 @@ public class Playable {
         this.health = health;
         this.gold = gold;
         this.level = level;
-    }
+        initiative = 0;
+    } //constructor
 
     public void attack() {
         
     }
 
 
+    public void rollInitiative() {
+        initiative = (int)(Math.random() * 20);
+    }
 
 
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public int getHealth() {
         return health;
     }
@@ -91,4 +102,8 @@ public class Playable {
     public void setFeet(Equipment feet) {
         this.feet = feet;
     }
+    public int getInitiative() {
+        return initiative;
+    }
+
 }

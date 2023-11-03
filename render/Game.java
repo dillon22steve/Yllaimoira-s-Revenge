@@ -45,7 +45,7 @@ public class Game implements Runnable {
         this.playing = new Playing(this);
         this.map = new Map();
         this.characterMenu = new CharacterMenu();
-        this.combat = new Combat();
+        this.combat = new Combat(this);
         this.questJournal = new QuestJournal();
         this.dialogueMenu = new Dialogue();
     }

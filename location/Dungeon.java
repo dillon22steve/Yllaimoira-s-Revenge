@@ -34,8 +34,8 @@ public class Dungeon extends Enterable {
             //enemy to the enemy at the random index in the ArrayList.
             int rand = (int)((Math.random() * (50 + numEnemies)));
             if (rand < numEnemies) {
+                playing.getGame().getCombat().initializeCombat(enemies.get(rand));
                 GameStates.GameState = GameStates.COMBAT;
-                playing.getGame().getCombat().setEnemy(enemies.get(rand));
             } //if
         } //if
     } //update
