@@ -11,10 +11,8 @@ public class Player extends Playable {
     private int imgSize;
     private MyList<PartyMember> party;
 
-    public Player(String name, int health, int gold, int level) {
-        super(name, health, gold, level);
-        img = HelperMethods.LoadImage("Heart_56.png");
-        imgSize = HelperMethods.CalcTileSize(48);
+    public Player(String name, int health, int gold, int level, String imgName) {
+        super(name, health, gold, level, imgName);
         party = null;
     } //constructor
 
@@ -24,12 +22,7 @@ public class Player extends Playable {
     } //giveToPartyMember
 
     
-    public BufferedImage getImg() {
-        return this.img;
-    } //getImg
-    public int getImgSize() {
-        return this.imgSize;
-    } //getImgSize
+    
     public MyList<PartyMember> getParty() {
         return this.party;
     } //getParty

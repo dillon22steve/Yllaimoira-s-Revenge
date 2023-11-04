@@ -9,9 +9,13 @@ public class Playable {
     private int level;
     private Equipment rightHand, leftHand, ring1, ring2, head, torso, legs, feet;
     private int initiative;
+    private BufferedImage img;
+    private int imgSize;
 
 
-    public Playable(String name, int health, int gold, int level) {
+    public Playable(String name, int health, int gold, int level, String imgName) {
+        img = HelperMethods.LoadImage(imgName);
+        imgSize = HelperMethods.CalcTileSize(48);
         this.name = name;
         this.health = health;
         this.gold = gold;
@@ -29,7 +33,17 @@ public class Playable {
     }
 
 
+    public boolean equals(Playable character) {
+        return this.name.equals(character.getName());
+    }
 
+
+    public BufferedImage getImg() {
+        return this.img;
+    } //getImg
+    public int getImgSize() {
+        return this.imgSize;
+    } //getImgSize
     public String getName() {
         return name;
     }

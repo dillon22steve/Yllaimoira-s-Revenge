@@ -41,7 +41,7 @@ public class Game implements Runnable {
         this.mainMenu = new MainMenu(this);
         this.characterCreation = new CharacterCreation();
         this.pauseMenu = new PauseMenu();
-        this.player = new Player("Steve", 100, 100, 1);
+        this.player = new Player("Steve", 100, 100, 1, "Heart_56.png");
         this.playing = new Playing(this);
         this.map = new Map();
         this.characterMenu = new CharacterMenu();
