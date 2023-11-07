@@ -15,7 +15,7 @@ import java.io.InputStream;
 import location.Location;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
-import utilz.constants.LocationConstants;
+import utilz.constants.location_constants.LocationConstants;
 
 public class WorldMap extends map.Map {
 

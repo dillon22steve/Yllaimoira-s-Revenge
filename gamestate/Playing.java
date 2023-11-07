@@ -8,8 +8,8 @@ import render.Game;
 import render.GamePanel;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
-import utilz.constants.LocationConstants;
 import utilz.constants.TileConstants;
+import utilz.constants.location_constants.LocationConstants;
 
 public class Playing implements GameStateInterface {
 

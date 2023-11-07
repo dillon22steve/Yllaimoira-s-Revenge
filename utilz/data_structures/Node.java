@@ -1,19 +1,19 @@
 package utilz.data_structures;
 
-public class Node<T extends Playable> {
+public class Node<Playable> {
     
-    private Node<T> next;
+    private Node<Playable> next;
     private Playable character;
 
     public Node(Playable character) {
         this.character = character;
     } //constructor
 
-    public Node<T> getNext() {
+    public Node<Playable> getNext() {
         return this.next;
     } //getNext
 
-    public void setNext(Node<T> next) {
+    public void setNext(Node<Playable> next) {
         this.next = next;
     } //setNext
 

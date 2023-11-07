@@ -7,7 +7,7 @@ import ui.buttons.CharCreatBtn;
 import utilz.Enums;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
-import utilz.constants.RaceConstants;
+import utilz.constants.character_constants.character_creation.RaceConstants;
 
 public class RaceSelectBar extends CharacterCreationBar {
     int btnX = HelperMethods.calcX(50);

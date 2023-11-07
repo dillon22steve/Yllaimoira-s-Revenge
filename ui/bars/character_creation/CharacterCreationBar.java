@@ -34,7 +34,7 @@ public class CharacterCreationBar extends ButtonBar {
             if (i == selection) {
                 g.setColor(Color.WHITE);
                 g.setFont(Constants.Fonts.CHAR_CREAT_BTN_FONT);
-                g.drawString("> ", btns[i].getX() - 20, btns[i].getY());
+                g.drawString("> ", btns[i].getX() - 20, btns[i].getYPos());
             }
 
             btns[i].draw(g);

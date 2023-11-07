@@ -1,4 +1,4 @@
-package utilz.constants;
+package utilz.constants.character_constants.character_creation;
 
 public class RaceConstants {
     public class Races {

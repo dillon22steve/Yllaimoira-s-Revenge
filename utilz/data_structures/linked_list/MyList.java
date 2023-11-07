@@ -1,15 +1,18 @@
 package utilz.data_structures.linked_list;
 
+import characters.playable.Playable;
+import utilz.data_structures.Node;
+
 public class MyList<T extends Playable> {
     
-    private Node<T> head;
+    private Node<Playable> head;
 
     public MyList() {
         head = null;
     } //constructor
 
-    public void add(T character) {
-        Node<T> newNode = new Node<T>(character);
+    public void add(Playable character) {
+        Node<Playable> newNode = new Node<Playable>(character);
         if (head == null) {
             head = newNode;
             return;
@@ -19,14 +22,14 @@ public class MyList<T extends Playable> {
         } //if
     } //add
 
-    public void remove(T character) {
+    public void remove(Playable character) {
         if (head == null) {
             return;
         } else {
             if (head.getCharacter().getName().equals(character.getName())) {
                 head = head.getNext();
             } else {
-                Node<T> temp = head;
+                Node<Playable> temp = head;
                 while (temp.getNext() != null) {
                     if (temp.getNext().getCharacter().getName().equals(character.getName())) {
                         temp.setNext(temp.getNext().getNext());
@@ -39,12 +42,12 @@ public class MyList<T extends Playable> {
         } //if
     } //remove
 
-    public T get(int index) {
+    public Playable get(int index) {
         if (head == null) {
             return null;
         } else {
             int i = 0;
-            Node<T> temp = head;
+            Node<Playable> temp = head;
             while (i < index && temp != null) {
                 temp = temp.getNext();
             } //while
@@ -62,12 +65,16 @@ public class MyList<T extends Playable> {
 
     public int getSize() {
         int count = 0;
-        Node<T> temp = head;
+        Node<Playable> temp = head;
         while (temp != null) {
             count++;
             temp = temp.getNext();
         } //while
         return count;
     } //getSize
+
+    public Node<Playable> getHead() {
+        return this.head;
+    } //getHead
 
 } //MyList

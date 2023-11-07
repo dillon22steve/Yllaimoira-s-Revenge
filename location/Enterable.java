@@ -16,9 +16,9 @@ public class Enterable extends Location {
         super(mapFileName, locImg, name, xPosWorldMap, yPosWorldMap, width, height);
         this.isInBuilding = true;
         this.cityIn = cityIn;
-        //this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
-        //this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
         loadImgArr();
+        this.doorLocX = doorLoc * GamePanel.TILE_SIZE;
+        this.doorLocY = (imgs.length - 1) * GamePanel.TILE_SIZE;
         calcOffsetsAndBorders();
     } //constructor
 

@@ -1,19 +1,15 @@
 package characters.playable;
 
-import java.awt.image.BufferedImage;
 import utilz.data_structures.linked_list.MyList;
 import equipment.Equipment;
-import utilz.HelperMethods;
 
 public class Player extends Playable {
 
-    private BufferedImage img;
-    private int imgSize;
     private MyList<PartyMember> party;
 
     public Player(String name, int health, int gold, int level, String imgName) {
         super(name, health, gold, level, imgName);
-        party = null;
+        party = new MyList<PartyMember>();
     } //constructor
 
 

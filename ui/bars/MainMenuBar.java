@@ -9,7 +9,7 @@ import gamestate.MainMenu;
 import ui.buttons.*;
 import utilz.HelperMethods;
 import utilz.constants.Constants;
-import utilz.constants.LocationConstants;
+import utilz.constants.location_constants.LocationConstants;
 import render.GamePanel;
 
 public class MainMenuBar extends ButtonBar {

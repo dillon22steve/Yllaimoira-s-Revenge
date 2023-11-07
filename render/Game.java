@@ -4,6 +4,7 @@ import java.lang.Runnable;
 
 import characters.playable.Player;
 import render.*;
+import utilz.HelperMethods;
 import gamestate.*;
 
 
@@ -36,6 +37,7 @@ public class Game implements Runnable {
 
     public void initClasses() {
         this.gamePanel = new GamePanel(this);
+        HelperMethods.LoadGame();
         this.gameFrame = new GameFrame(gamePanel);
         this.render = new Render(this);
         this.mainMenu = new MainMenu(this);

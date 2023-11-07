@@ -1,8 +1,9 @@
-package utilz.constants;
+package utilz.constants.location_constants;
 
 import location.City;
 import location.Location;
 import utilz.HelperMethods;
+import utilz.constants.location_constants.BuildingConstants.DungeonConstants;
 
 public class LocationConstants {
 
@@ -43,6 +44,7 @@ public class LocationConstants {
             HelperMethods.calcX(94), HelperMethods.calcY(97));
 
         BuildingConstants.InitBuildings();
+        BuildingConstants.DungeonConstants.InitDungeons();
     } //InitLocations
     
 } //LocationConstants

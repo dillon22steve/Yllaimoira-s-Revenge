@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 import ui.buttons.CharCreatBtn;
 import utilz.HelperMethods;
-import utilz.constants.ClassConstants;
 import utilz.constants.Constants;
+import utilz.constants.character_constants.character_creation.ClassConstants;
 
 public class ClassSelectBar extends CharacterCreationBar {
     int btnYStart = HelperMethods.calcY(100);

@@ -9,9 +9,6 @@ import render.GamePanel;
 
 public class Building extends Enterable {
 
-    private int doorLocX;
-    private int doorLocY;
-
     public Building(String mapFileName, BufferedImage locImg, String name, int xPosWorldMap, int yPosWorldMap,
             int width, int height, Location cityIn, int doorLoc) {
 
@@ -61,6 +58,8 @@ public class Building extends Enterable {
                 //that holds the door to the building.
                 playing.setCurrLocation(cityIn);
         } //if
+
+        //System.out.println("X: " + playerX + ", Y: " + playerY);
     } //update
 
     @Override

@@ -7,20 +7,29 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import location.Enterable;
 import location.Building;
 
 import java.awt.FontMetrics;
 
 import render.GamePanel;
-import utilz.constants.BuildingConstants;
-import utilz.constants.LocationConstants;
 import utilz.constants.TileConstants;
+import utilz.constants.character_constants.EnemyConstants;
+import utilz.constants.location_constants.BuildingConstants;
+import utilz.constants.location_constants.LocationConstants;
 
 public class HelperMethods {
 
     public static void LoadGame() {
+        /*
         runNow(() -> TileConstants.IMG.LoadImages());
         runNow(() -> LocationConstants.InitLocations());
+        runNow(() -> BuildingConstants.InitBuildings());
+        */
+        TileConstants.IMG.LoadImages();
+        EnemyConstants.InitEnemies();
+        LocationConstants.InitLocations();
+        BuildingConstants.InitBuildings();
     } //LoadGame
 
     public static BufferedImage LoadImage(String filename) {
@@ -97,9 +106,9 @@ public class HelperMethods {
 
 
 
-    public static Building DetermineBuilding(int tile) {
+    public static Enterable DetermineBuilding(int tile) {
         if (tile >= TileConstants.ID.NOBLE_HOME_1 && tile <= TileConstants.ID.NOBLE_HOME_16) {
-            return null;
+            return BuildingConstants.DungeonConstants.testDungeon;
         } else if (tile >= TileConstants.ID.INN_1 && tile <= TileConstants.ID.INN_18) {
             return null;
         } else if (tile >= TileConstants.ID.TAVERN_1 && tile <= TileConstants.ID.TAVERN_15) {

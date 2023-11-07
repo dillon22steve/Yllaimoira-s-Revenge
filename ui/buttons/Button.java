@@ -17,20 +17,40 @@ public class Button {
         this.txt = txt;
 
         initBounds();
-    }
+    } //constructor
 
     private void initBounds() {
         this.bounds = new Rectangle(xPos, yPos, width, height);
-    }
+    } //initBounds
 
     public Rectangle getBounds() {
         return this.bounds;
-    }
+    } //getBounds
+
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    } //setBounds
 
     public int getX() {
         return this.xPos;
-    }
-    public int getY() {
+    } //getX
+    public int getYPos() {
         return this.yPos;
-    }
-}
+    } //getY
+    public void setYPos(int y) {
+        this.yPos = y;
+    } //setY
+
+    public void setTxt(String txt) {
+        this.txt = txt;
+    } //setTxt
+
+    public String getTxt() {
+        return this.txt;
+    } //getTxt
+
+    public int getHeight() {
+        return this.height;
+    } //getHeight
+
+} //Button
