@@ -1,15 +1,15 @@
 package characters.playable;
 
-import utilz.data_structures.linked_list.MyList;
 import equipment.Equipment;
+import utilz.data_structures.linked_list.playable.PlayableList;
 
 public class Player extends Playable {
 
-    private MyList<PartyMember> party;
+    private PlayableList<PartyMember> party;
 
     public Player(String name, int health, int gold, int level, String imgName) {
         super(name, health, gold, level, imgName);
-        party = new MyList<PartyMember>();
+        party = new PlayableList<PartyMember>();
     } //constructor
 
 
@@ -19,7 +19,7 @@ public class Player extends Playable {
 
     
     
-    public MyList<PartyMember> getParty() {
+    public PlayableList<PartyMember> getParty() {
         return this.party;
     } //getParty
     public void addToParty(PartyMember partyMember) {

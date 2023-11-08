@@ -1,12 +1,12 @@
 package utilz.data_structures.queue;
 
 import characters.playable.Playable;
-import utilz.data_structures.Node;
+import utilz.data_structures.linked_list.playable.PlayableNode;
 
 public class CombatQueue<T extends Playable> {
     
-    private Node<Playable> rear;
-    private Node<Playable> front;
+    private PlayableNode<Playable> rear;
+    private PlayableNode<Playable> front;
 
     public CombatQueue() {
         this.rear = null;
@@ -14,7 +14,7 @@ public class CombatQueue<T extends Playable> {
     } //constructor
 
     public void enqueue(Playable character) {
-        Node<Playable> nodeToQueue = new Node<Playable>(character);
+        PlayableNode<Playable> nodeToQueue = new PlayableNode<Playable>(character);
         if (rear == null) {
             front = nodeToQueue;
             rear = nodeToQueue;

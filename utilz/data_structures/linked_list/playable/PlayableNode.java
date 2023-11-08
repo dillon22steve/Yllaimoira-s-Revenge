@@ -1,19 +1,19 @@
-package utilz.data_structures;
+package utilz.data_structures.linked_list.playable;
 
-public class Node<Playable> {
+public class PlayableNode<Playable> {
     
-    private Node<Playable> next;
+    private PlayableNode<Playable> next;
     private Playable character;
 
-    public Node(Playable character) {
+    public PlayableNode(Playable character) {
         this.character = character;
     } //constructor
 
-    public Node<Playable> getNext() {
+    public PlayableNode<Playable> getNext() {
         return this.next;
     } //getNext
 
-    public void setNext(Node<Playable> next) {
+    public void setNext(PlayableNode<Playable> next) {
         this.next = next;
     } //setNext
 

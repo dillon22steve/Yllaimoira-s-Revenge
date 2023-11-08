@@ -2,6 +2,7 @@ package characters.playable;
 
 import java.awt.image.BufferedImage;
 
+import characters.attacks.Attack;
 import equipment.Equipment;
 import utilz.HelperMethods;
 
@@ -16,6 +17,7 @@ public class Playable {
     private BufferedImage img;
     private int imgSize;
     private int xPos, yPos;
+    private Attack[] attacks;
 
 
     public Playable(String name, int health, int gold, int level, String imgName) {
@@ -28,6 +30,7 @@ public class Playable {
         initiative = 0;
     } //constructor
 
+
     public void attack() {
         
     } //attack
@@ -39,8 +42,14 @@ public class Playable {
 
 
     public boolean equals(Playable character) {
-        return this.name.equals(character.getName());
+        return name.equals(character.getName());
     } //equals
+
+
+    public void replaceAttack(int index, Attack newAttack) {
+        attacks[index] = newAttack;
+    } //replaceAttack
+
 
 
     public BufferedImage getImg() {
@@ -134,7 +143,10 @@ public class Playable {
         this.feet = feet;
     } //setFeet
     public int getInitiative() {
-        return initiative;
+        return this.initiative;
     } //getInitiative
+    public Attack[] getAttacks() {
+        return this.attacks;
+    } //getAttacks
 
 } //Playable

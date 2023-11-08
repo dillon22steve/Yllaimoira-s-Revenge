@@ -8,6 +8,7 @@ import gamestate.GameStates;
 import gamestate.Playing;
 import render.GamePanel;
 import utilz.constants.character_constants.EnemyConstants;
+import utilz.data_structures.linked_list.playable.PlayableList;
 
 import java.lang.Math;
 import java.awt.Graphics;
@@ -58,7 +59,9 @@ public class Dungeon extends Enterable {
             //enemy to the enemy at the random index in the ArrayList.
             int rand = (int)((Math.random() * (50 + numEnemies)));
             if (rand < numEnemies) {
-                playing.getGame().getCombat().initializeCombat(enemies.get(rand));
+                PlayableList<Enemy> enemiesToQueue = new PlayableList<Enemy>();
+                enemiesToQueue.add(enemies.get(rand));
+                playing.getGame().getCombat().initializeCombat(enemiesToQueue);
                 GameStates.GameState = GameStates.COMBAT;
             } //if
         } //if

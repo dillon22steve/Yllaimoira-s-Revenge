@@ -9,7 +9,8 @@ import ui.bars.combat_menu.ActionMenuBar;
 import ui.bars.combat_menu.RunBar;
 import ui.bars.combat_menu.SelectionBar;
 import utilz.HelperMethods;
-import utilz.data_structures.Node;
+import utilz.data_structures.linked_list.playable.PlayableList;
+import utilz.data_structures.linked_list.playable.PlayableNode;
 import utilz.data_structures.queue.CombatQueue;
 import characters.playable.Playable;
 import characters.playable.Player;
@@ -21,6 +22,7 @@ public class Combat implements GameStateInterface {
     
     private char combatState;
 
+    private PlayableList<Enemy> enemies;
     private Enemy enemy;
     private CombatQueue<Playable> combatQueue;
     private Playable currentTurn;
@@ -59,11 +61,18 @@ public class Combat implements GameStateInterface {
 
 
 
-    public void initializeCombat(Enemy enemy) {
-        this.enemy = enemy;
-        Playable[] tempArr = new Playable[game.getPlayer().getParty().getSize() + 2];
-        tempArr[0] = enemy;
-        tempArr[1] = game.getPlayer();
+    public void initializeCombat(PlayableList<Enemy> enemies) {
+        this.enemies = enemies;
+        Playable[] tempArr = new Playable[game.getPlayer().getParty().getSize() + (enemies.getSize() + 1)];
+
+        int i = 0;
+        PlayableNode<Playable> temp = enemies.getHead();
+        while (temp != null) {
+            tempArr[i] = temp.getCharacter();
+            temp = temp.getNext();
+            i++;
+        } //while
+        tempArr[i] = game.getPlayer();
 
         initializeQueue(tempArr);
 
@@ -165,7 +174,7 @@ public class Combat implements GameStateInterface {
 
     private void drawParty(Graphics g) {
         Player player = game.getPlayer();
-        Node<Playable> temp = player.getParty().getHead();
+        PlayableNode<Playable> temp = player.getParty().getHead();
         int y = partyYOffset;
         int i = 1;
 

@@ -1,18 +1,17 @@
-package utilz.data_structures.linked_list;
+package utilz.data_structures.linked_list.playable;
 
 import characters.playable.Playable;
-import utilz.data_structures.Node;
 
-public class MyList<T extends Playable> {
+public class PlayableList<T extends Playable> {
     
-    private Node<Playable> head;
+    private PlayableNode<Playable> head;
 
-    public MyList() {
+    public PlayableList() {
         head = null;
     } //constructor
 
     public void add(Playable character) {
-        Node<Playable> newNode = new Node<Playable>(character);
+        PlayableNode<Playable> newNode = new PlayableNode<Playable>(character);
         if (head == null) {
             head = newNode;
             return;
@@ -29,7 +28,7 @@ public class MyList<T extends Playable> {
             if (head.getCharacter().getName().equals(character.getName())) {
                 head = head.getNext();
             } else {
-                Node<Playable> temp = head;
+                PlayableNode<Playable> temp = head;
                 while (temp.getNext() != null) {
                     if (temp.getNext().getCharacter().getName().equals(character.getName())) {
                         temp.setNext(temp.getNext().getNext());
@@ -47,7 +46,7 @@ public class MyList<T extends Playable> {
             return null;
         } else {
             int i = 0;
-            Node<Playable> temp = head;
+            PlayableNode<Playable> temp = head;
             while (i < index && temp != null) {
                 temp = temp.getNext();
             } //while
@@ -65,7 +64,7 @@ public class MyList<T extends Playable> {
 
     public int getSize() {
         int count = 0;
-        Node<Playable> temp = head;
+        PlayableNode<Playable> temp = head;
         while (temp != null) {
             count++;
             temp = temp.getNext();
@@ -73,7 +72,7 @@ public class MyList<T extends Playable> {
         return count;
     } //getSize
 
-    public Node<Playable> getHead() {
+    public PlayableNode<Playable> getHead() {
         return this.head;
     } //getHead
 
